@@ -1,0 +1,62 @@
+{
+  "config": {
+    "configFile": "E:\\RL QA\\Automation\\Align-Wellness\\playwright.config.ts",
+    "rootDir": "E:/RL QA/Automation/Align-Wellness/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {},
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "report.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "E:/RL QA/Automation/Align-Wellness/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "id": "",
+        "name": "",
+        "testDir": "E:/RL QA/Automation/Align-Wellness/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "001Login.test.ts"
+        ],
+        "timeout": 300000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.35.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [],
+  "errors": [
+    {
+      "message": "No tests found",
+      "stack": "Error: No tests found\n"
+    }
+  ]
+}

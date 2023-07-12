@@ -36,7 +36,7 @@ const config: PlaywrightTestConfig = {
     open: "never"
   }]],
 
-  // reporter: [ ['html', { outputFolder: './playwright-report/'+ ReportDate}]],
+  // reporter: [ ["html"], { outputFolder: ('./playwright-report/'+ ReportDate)}],
 
 
 
@@ -71,6 +71,7 @@ const config: PlaywrightTestConfig = {
     screenshot :'only-on-failure',
     viewport: { width: 1700, height: 920 },
     ignoreHTTPSErrors: true,
+
     //  permissions: ["camera"],
 
 

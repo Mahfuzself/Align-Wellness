@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "totalTime": 3700.680999994278
+      "totalTime": 15865.46700000763
     },
     "preserveOutput": "always",
     "reporter": [
@@ -62,8 +62,8 @@
       "line": 0,
       "specs": [
         {
-          "title": "001Login -> 04 Validate login sucessfully",
-          "ok": false,
+          "title": "001Login -> 03 Validate invalid format alert for username/email field",
+          "ok": true,
           "tags": [],
           "tests": [
             {
@@ -75,46 +75,22 @@
               "results": [
                 {
                   "workerIndex": 0,
-                  "status": "failed",
-                  "duration": 3062,
-                  "error": {
-                    "message": "page.goto: net::ERR_ABORTED; maybe frame was detached?\n=========================== logs ===========================\nnavigating to \"https://dev.alignwell.com/login\", waiting until \"load\"\n============================================================",
-                    "stack": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\n=========================== logs ===========================\nnavigating to \"https://dev.alignwell.com/login\", waiting until \"load\"\n============================================================\n    at E:\\RL QA\\Automation\\Align-Wellness\\tests\\001login.test.ts:36:16",
-                    "location": {
-                      "file": "E:\\RL QA\\Automation\\Align-Wellness\\tests\\001login.test.ts",
-                      "column": 16,
-                      "line": 36
-                    },
-                    "snippet": "\u001b[0m \u001b[90m 34 |\u001b[39m test\u001b[33m.\u001b[39monly(\u001b[32m\"001Login -> 04 Validate login sucessfully\"\u001b[39m\u001b[33m,\u001b[39m\u001b[36masync\u001b[39m({page\u001b[33m,\u001b[39mloginPage})\u001b[33m=>\u001b[39m{\u001b[0m\n\u001b[0m \u001b[90m 35 |\u001b[39m     \u001b[90m// await page.goto('/admin/#/sign-in')\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 36 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m\"/login\"\u001b[39m)\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 37 |\u001b[39m     \u001b[36mawait\u001b[39m loginPage\u001b[33m.\u001b[39mlogin(data\u001b[33m.\u001b[39mvalidusername\u001b[33m,\u001b[39mdata\u001b[33m.\u001b[39mvalidpassword)\u001b[0m\n\u001b[0m \u001b[90m 38 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mreload()\u001b[0m\n\u001b[0m \u001b[90m 39 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m50000\u001b[39m)\u001b[0m"
-                  },
-                  "errors": [
-                    {
-                      "location": {
-                        "file": "E:\\RL QA\\Automation\\Align-Wellness\\tests\\001login.test.ts",
-                        "column": 16,
-                        "line": 36
-                      },
-                      "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\n=========================== logs ===========================\nnavigating to \"https://dev.alignwell.com/login\", waiting until \"load\"\n============================================================\n\n\u001b[0m \u001b[90m 34 |\u001b[39m test\u001b[33m.\u001b[39monly(\u001b[32m\"001Login -> 04 Validate login sucessfully\"\u001b[39m\u001b[33m,\u001b[39m\u001b[36masync\u001b[39m({page\u001b[33m,\u001b[39mloginPage})\u001b[33m=>\u001b[39m{\u001b[0m\n\u001b[0m \u001b[90m 35 |\u001b[39m     \u001b[90m// await page.goto('/admin/#/sign-in')\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 36 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m\"/login\"\u001b[39m)\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 37 |\u001b[39m     \u001b[36mawait\u001b[39m loginPage\u001b[33m.\u001b[39mlogin(data\u001b[33m.\u001b[39mvalidusername\u001b[33m,\u001b[39mdata\u001b[33m.\u001b[39mvalidpassword)\u001b[0m\n\u001b[0m \u001b[90m 38 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mreload()\u001b[0m\n\u001b[0m \u001b[90m 39 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m50000\u001b[39m)\u001b[0m\n\n\u001b[2m    at E:\\RL QA\\Automation\\Align-Wellness\\tests\\001login.test.ts:36:16\u001b[22m"
-                    }
-                  ],
+                  "status": "passed",
+                  "duration": 15009,
+                  "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-07-12T03:14:26.129Z",
-                  "attachments": [],
-                  "errorLocation": {
-                    "file": "E:\\RL QA\\Automation\\Align-Wellness\\tests\\001login.test.ts",
-                    "column": 16,
-                    "line": 36
-                  }
+                  "startTime": "2023-07-12T04:01:23.271Z",
+                  "attachments": []
                 }
               ],
-              "status": "unexpected"
+              "status": "expected"
             }
           ],
-          "id": "bb9eb754c57c133117cb-96b0df8c1a98496645d1",
+          "id": "bb9eb754c57c133117cb-69dd65962471bf2b80d4",
           "file": "001login.test.ts",
-          "line": 34,
+          "line": 26,
           "column": 6
         }
       ]

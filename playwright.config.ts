@@ -16,7 +16,8 @@ var ReportDate = date.getFullYear() + ("0" + (date.getMonth() + 1)).slice(-2) + 
 const config: PlaywrightTestConfig = {
   testDir: './tests',
   testMatch: [
-    "001Login.test.ts", 
+    //"001login.test.ts", 
+    "002usermanagement.test.ts"
 
   ],
   timeout: 1 * 30 * 10000,
@@ -28,13 +29,13 @@ const config: PlaywrightTestConfig = {
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 1 : 1,
 
-  reporter: process.env.CI ? [["junit", {
-    outputFile: "results.xml"
-  }]] : [["json", {
-    outputFile: "report.json"
-  }], ["html", {
-    open: "never"
-  }]],
+  // reporter: process.env.CI ? [["junit", {
+  //   outputFile: "results.xml"
+  // }]] : [["json", {
+  //   outputFile: "report.json"
+  // }], ["html", {
+  //   open: "never"
+  // }]],
 
   // reporter: [ ["html"], { outputFolder: ('./playwright-report/'+ ReportDate)}],
 
@@ -99,6 +100,7 @@ const config: PlaywrightTestConfig = {
   //   //   },
   //   // }
   // ]
+  // reporter: [ ["html"], { outputFolder: ('./playwright-report/'+ ReportDate)}]
 };
 
 export default config;

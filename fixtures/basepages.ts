@@ -1,11 +1,16 @@
 import LoginPage from '@pages/Login.page';
 import { test as baseTest } from '@playwright/test';
+import usemanagementPage from '@pages/usermanagement.page'
 const test = baseTest.extend<{
     loginPage: LoginPage;
+    usermanagementPage : usemanagementPage;
 }>(
     {
         loginPage: async ({page }, use) => {
                     await use(new LoginPage(page));
+                },
+                usermanagementPage : async({page},use) =>{
+                    await use (new usemanagementPage(page))
                 },
     }
 )

@@ -13,7 +13,8 @@
       "baseUrl": ".",
       "paths": {
           "@pages/*": [
-            "pages/loginPage/*"
+            "pages/loginPage/*",
+            "pages/usermanagementPage/*"
              
           ],
           "@fixtures/*": [

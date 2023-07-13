@@ -12,6 +12,7 @@ export default class LoginPage {
         AddUserText:'//h4[text()="Add User"]',
         AdduserEmailfield:"//input[@placeholder='Please type your email address']",
         userRole:"//select[@formcontrolname='userRole']",
+        masterAdmin : "(//option[@value='owner_masteradmin'])[2]",
     }
     async clickUserManagementRightAngleIcon(){
         const ele = await this.page.locator(this.usermanagementPage_Elements.usermanagementRightAngleIcon)
@@ -32,12 +33,19 @@ export default class LoginPage {
             await expect(ele).toContainText("Add User")
         }
     }
-   async inputAddUserEmail(){
+   async inputAddUserEmail(username : string){
     const ele = this.page.locator(this.usermanagementPage_Elements.AdduserEmailfield)
     if(await ele.isVisible()){
-        await this.page.keyboard.press(`${ele}+KeyV`);
-        await this.page.waitForTimeout(1000)
+         await ele.fill(username)
     }
+   }
+   async clickUserRole(){
+    const ele = await this.page.locator(this.usermanagementPage_Elements.userRole)
+    if(await ele.isVisible()){
+        await ele.click()
+        await this.page.waitForTimeout(2000)
+    }
+    await this.page.locator(this.usermanagementPage_Elements.masterAdmin).selectOption("owner_masteradmin")
    }
    
  

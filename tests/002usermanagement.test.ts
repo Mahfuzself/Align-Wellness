@@ -1,9 +1,7 @@
-import test, { expect } from "@fixtures/basepages";
-import { chromium } from "@playwright/test";
-import { ChromiumBrowser } from "@playwright/test";
+import test from "@fixtures/basepages";
 //import test from "@playwright/test";
 import * as data from "testData/login.cred.json"
-import * as email from "testData/username.email.json"
+import * as email from "testData/username.email.json";
 test("Validate masteradmin type user is added successfully",async({page,loginPage,usermanagementPage})=>{
     await page.goto("/login")
     await loginPage.login(data.validusername, data.validpassword)

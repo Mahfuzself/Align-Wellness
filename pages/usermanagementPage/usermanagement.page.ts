@@ -12,7 +12,7 @@ export default class LoginPage {
         AddUserText:'//h4[text()="Add User"]',
         AdduserEmailfield:"//input[@placeholder='Please type your email address']",
         userRole:"//select[@formcontrolname='userRole']",
-        masterAdmin : "(//option[@value='owner_masteradmin'])[2]",
+        masterAdmin : "(//select[contains(@class,'form-select ng-dirty')]//option)[2]",
     }
     async clickUserManagementRightAngleIcon(){
         const ele = await this.page.locator(this.usermanagementPage_Elements.usermanagementRightAngleIcon)
@@ -41,11 +41,12 @@ export default class LoginPage {
    }
    async clickUserRole(){
     const ele = await this.page.locator(this.usermanagementPage_Elements.userRole)
-    if(await ele.isVisible()){
+    // if(await ele.isVisible()){
         await ele.click()
         await this.page.waitForTimeout(2000)
-    }
-    await this.page.locator(this.usermanagementPage_Elements.masterAdmin).selectOption("owner_masteradmin")
+        await this.page.locator(this.usermanagementPage_Elements.masterAdmin).click({force:true})
+    // }
+    
    }
    
  

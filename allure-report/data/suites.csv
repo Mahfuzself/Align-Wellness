@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Tue Jul 18 10:47:48 BDT 2023","Tue Jul 18 10:49:22 BDT 2023","93747","","001login.test.ts","","","","001Login -> 04 Validate login sucessfully",""
+"passed","Tue Jul 18 10:47:07 BDT 2023","Tue Jul 18 10:47:21 BDT 2023","13918","","001login.test.ts","","","","001Login  -> 01 Validate empty password allert without input password field",""
+"passed","Tue Jul 18 10:47:21 BDT 2023","Tue Jul 18 10:47:35 BDT 2023","14378","","001login.test.ts","","","","001Login -> 02 Validate empty username alert without input username field",""
+"passed","Tue Jul 18 10:47:35 BDT 2023","Tue Jul 18 10:47:48 BDT 2023","13177","","001login.test.ts","","","","001Login -> 03 Validate invalid format alert for username/email field",""
+"failed","Tue Jul 18 10:46:19 BDT 2023","Tue Jul 18 10:47:06 BDT 2023","46628","","001login.test.ts","","","","Login test",""

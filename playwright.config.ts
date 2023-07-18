@@ -16,8 +16,9 @@ var ReportDate = date.getFullYear() + ("0" + (date.getMonth() + 1)).slice(-2) + 
 const config: PlaywrightTestConfig = {
   testDir: './tests',
   testMatch: [
-    //"001login.test.ts", 
-    "002usermanagement.test.ts"
+    "001login.test.ts", 
+    // "002usermanagement.test.ts",
+    // "003events.test.ts"
 
   ],
   timeout: 1 * 30 * 10000,
@@ -101,6 +102,10 @@ const config: PlaywrightTestConfig = {
   //   // }
   // ]
   // reporter: [ ["html"], { outputFolder: ('./playwright-report/'+ ReportDate)}]
+  // retries : 1,
+  // workers : 2
+
+
 };
 
 export default config;

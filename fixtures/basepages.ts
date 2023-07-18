@@ -1,9 +1,11 @@
 import LoginPage from '@pages/Login.page';
 import { test as baseTest } from '@playwright/test';
 import usemanagementPage from '@pages/usermanagement.page'
+import EventsPage from '@pages/Events.page';
 const test = baseTest.extend<{
     loginPage: LoginPage;
     usermanagementPage : usemanagementPage;
+    eventsPage : EventsPage;
 }>(
     {
         loginPage: async ({page }, use) => {
@@ -11,6 +13,9 @@ const test = baseTest.extend<{
                 },
                 usermanagementPage : async({page},use) =>{
                     await use (new usemanagementPage(page))
+                },
+                eventsPage : async({page},use) =>{
+                    await use (new EventsPage(page))
                 },
     }
 )

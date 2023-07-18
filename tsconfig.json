@@ -14,7 +14,8 @@
       "paths": {
           "@pages/*": [
             "pages/loginPage/*",
-            "pages/usermanagementPage/*"
+            "pages/usermanagementPage/*",
+            "pages/eventmanagementPage/*"
              
           ],
           "@fixtures/*": [

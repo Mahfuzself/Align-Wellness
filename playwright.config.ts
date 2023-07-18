@@ -16,16 +16,12 @@ var ReportDate = date.getFullYear() + ("0" + (date.getMonth() + 1)).slice(-2) + 
 const config: PlaywrightTestConfig = {
   testDir: './tests',
   testMatch: [
-    "001login.test.ts", 
+    // "001login.test.ts", 
     // "002usermanagement.test.ts",
-    // "003events.test.ts"
+    "003events.test.ts"
 
   ],
-  timeout: 1 * 30 * 10000,
-  expect: {
-    timeout: 6000
-
-  },
+  
   fullyParallel: true,
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 1 : 1,
@@ -38,7 +34,7 @@ const config: PlaywrightTestConfig = {
   //   open: "never"
   // }]],
 
-  // reporter: [ ["html"], { outputFolder: ('./playwright-report/'+ ReportDate)}],
+  // reporter: [ ["experimental-allure-playwright"]],
 
 
 
@@ -81,6 +77,14 @@ const config: PlaywrightTestConfig = {
     // trace: process.env.CI ? "off" : "off",
     // video: process.env.CI ? "off" : "off",
     // screenshot: process.env.CI ? "off" : "on",
+  },
+  // retries : 1,
+  // workers : 1,
+  timeout: 1 * 30 * 10000,
+  //reporter :"experimental-allure-playwright",
+  expect: {
+    timeout: 6000
+
   },
 
 

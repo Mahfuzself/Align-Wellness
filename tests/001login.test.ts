@@ -23,7 +23,7 @@ test("001Login -> 02 Validate empty username alert without input username field"
     await loginPage.verifyEmptyUsername_Alert()
     await page.waitForTimeout(3000)
 })
-test("001Login -> 03 Validate invalid format alert for username/email field",async({page,loginPage})=>{
+test.only("001Login -> 03 Validate invalid format alert for username/email field",async({page,loginPage})=>{
     // await page.goto('/admin/#/sign-in')
     await page.goto("/login")
     await loginPage.invalidusernameformat()

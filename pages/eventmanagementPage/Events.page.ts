@@ -10,7 +10,7 @@ export default class EventsPage {
         Eventsmanagement : "//a[.='Event Management']",
         Events: "//a[contains(text(),'Events')]",
         AddEvents:"//button[text()=' Add Event ']",
-        CompanyDropdown:"clientList",
+        CompanyDropdown:"//select[contains(@class,'form-select ng-pristine')]",
         Company : "//select[@formcontrolname='clientName']",
     }
     async clickEventsmanagement(){
@@ -43,9 +43,9 @@ export default class EventsPage {
         const ele = await this.page.locator(this.eventsPage_Elements.CompanyDropdown)
         try {
             await this.page.waitForTimeout(2000)
-            await ele.click({button:"left",delay:1000})
+            // await this.page.selectOption(ele,{value: "Bkash"})
             await this.page.waitForTimeout(2000)
-            await this.page.locator(this.eventsPage_Elements.Company).selectOption({value: "Bkash"})
+            // await this.page.locator(this.eventsPage_Elements.Company).selectOption(})
         } catch (error) {
             throw new Error(`Align wellness | Events ManageMent | Events | Add Event page elements is not visible : ${error}`)
         }

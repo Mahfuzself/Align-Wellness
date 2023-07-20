@@ -2,10 +2,12 @@ import LoginPage from '@pages/Login.page';
 import { test as baseTest } from '@playwright/test';
 import usemanagementPage from '@pages/usermanagement.page'
 import EventsPage from '@pages/Events.page';
+import companyPage from 'pages/company.page';
 const test = baseTest.extend<{
     loginPage: LoginPage;
     usermanagementPage : usemanagementPage;
     eventsPage : EventsPage;
+    clientsPage : companyPage;
 }>(
     {
         loginPage: async ({page }, use) => {
@@ -17,7 +19,10 @@ const test = baseTest.extend<{
                 eventsPage : async({page},use) =>{
                     await use (new EventsPage(page))
                 },
-    }
+                clientsPage : async({page},use) =>{
+                    await use (new companyPage(page))
+                },
+            },
 )
 // const test = baseTest.extend<{
 //     loginPage: LoginPage;

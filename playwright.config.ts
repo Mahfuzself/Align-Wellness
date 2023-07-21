@@ -19,7 +19,8 @@ const config: PlaywrightTestConfig = {
     // "001login.test.ts", 
     // "002usermanagement.test.ts",
     // "003events.test.ts",
-    "company.test.ts"
+    // "company.test.ts"
+    "employeeuser.test.ts"
 
   ],
   

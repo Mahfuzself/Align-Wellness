@@ -16,7 +16,7 @@
             "pages/loginPage/*",
             "pages/usermanagementPage/*",
             "pages/eventmanagementPage/*",
-            "pages/clientsPage/*"
+            "pages/clientsPage/*",
              
           ],
           "@fixtures/*": [

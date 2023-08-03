@@ -21,6 +21,6 @@ export default class brokerPage {
         AdressText:"//label[@for='address']",
         Suit_Apt_Location:"//label[text()=' Suite/apt/location ']",
         ContactPersonText: "//h5[text()='Contact Person']",
-        
+
     }
 }

@@ -5,7 +5,7 @@ export default class LoginPage {
     constructor(page: Page) {
         this.page = page;
     }
-    private usermanagementPage_Elements  ={
+    private usermanagementPage_Elements  = {
         usermanagementRightAngleIcon : "//span[text()='User Management']/following-sibling::i",
         AlignWellUser: '//a[text()=" Align Well User "]',
         AddUser:'//button[text()=" Add User "]',

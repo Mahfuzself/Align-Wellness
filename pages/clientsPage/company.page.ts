@@ -16,9 +16,9 @@ export default class companyPage {
         inputContactprsonEmail:"Email",
         inputContactprsonPhoneNumber:"InputPhone",
         UploadCompanyProfilePhoto:"(//i[@class='icon-upload'])[1]",
-        UploadCompanyCoverPhoto:"(//i[@class='icon-upload'])[2]",\
+        UploadCompanyCoverPhoto:"(//i[@class='icon-upload'])[2]",
         AddCompanyText:"//h4[text()='Add Company']",
-        CompanyInformationText:""
+        CompanyInformationText:"//h5[text()='Company Information']"
 
     }
     

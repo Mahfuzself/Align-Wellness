@@ -4,5 +4,10 @@
     "validusername" : "aubreyalexander@yopmail.com",
     "validpassword" : "Test12345@",
     "validusername2": "andrewmiller@yopmail.com",
-    "validpassword2" : "Test@1234"
-}
+    "validpassword2" : "Test@1234",
+    "validmasteradminusername" : "andrewmiller@yopmail.com",
+    "validmasteradminpassword" : "Test@1234",
+    "validadminusername" : "johnhowarth@yopmail.com",
+    "commonpassword" : "Test@1234",
+    "validstandardusername":"jamessmith@yopmail.com"
+} 

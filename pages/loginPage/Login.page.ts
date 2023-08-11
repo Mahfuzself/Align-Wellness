@@ -13,6 +13,7 @@ export default class LoginPage {
         EmptyusernameIcon:"//i[contains(@class,'icon-warning-o text-danger')]",
         EmptyUsernameText:"//div[text()=' Email address cannot be empty. ']",
         InvalidUsernameAlert:"//div[text()=' Email address is not a valid email. ']",
+        UserListText : "//h1[text()='User List']",
     }
     async inputusernamefield(uname : string){
         await this.enterEmail(uname);
@@ -25,7 +26,7 @@ export default class LoginPage {
         await this.enterLoginPassword(password);
         await this.page.waitForLoadState()
         await this.clickSubmittBtn();
-        await this.page.waitForTimeout(35000)
+        await this.page.waitForTimeout(15000)
     }
     async loginNegative(invalidusername: string, invalidpassword: string) {
         await this.enterEmail(invalidusername);
@@ -131,7 +132,13 @@ async verifyInvalaidUsernameFormat_Alert(){
     if(await ele.isVisible()){
        await expect(ele).toContainText("Email address is not a valid email.")
     }
-
+}
+async verifyUserListText(){
+    const ele = await this.page.locator(this.LoginPage_Elements.UserListText)
+    if(await ele.isVisible()){
+       await expect(ele).toContainText("User List")
+    }
+    else throw new Error('User list text is not visible')
 }
  
 }

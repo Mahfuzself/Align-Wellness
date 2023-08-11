@@ -14,12 +14,14 @@ export default class LoginPage {
         EmptyUsernameText:"//div[text()=' Email address cannot be empty. ']",
         InvalidUsernameAlert:"//div[text()=' Email address is not a valid email. ']",
         UserListText : "//h1[text()='User List']",
+        incorrectUserName: "//h4[text()='Incorrect user name ']",
+        AccountBlockedAlert: "//h4[text()='Your account has been Locked. Please contact the system administrator. ']"
     }
     async inputusernamefield(uname : string){
         await this.enterEmail(uname);
     }
     async inputpasswordfield(password : string){
-        await this.enterEmail(password);
+        await this.enterLoginPassword(password);
     }
     async login(username: string, password: string) {
         await this.enterEmail(username);
@@ -131,6 +133,7 @@ async verifyInvalaidUsernameFormat_Alert(){
     const ele = await this.page.locator(this.LoginPage_Elements.InvalidUsernameAlert)
     if(await ele.isVisible()){
        await expect(ele).toContainText("Email address is not a valid email.")
+       await this.page.waitForTimeout(1000)
     }
 }
 async verifyUserListText(){
@@ -139,6 +142,36 @@ async verifyUserListText(){
        await expect(ele).toContainText("User List")
     }
     else throw new Error('User list text is not visible')
+}
+async inputDoesnotexistEmail(wrongemail : string){
+    const ele = await this.page.locator(this.LoginPage_Elements.email)
+    if(await ele.isVisible()){
+        await ele.fill(wrongemail)
+
+    }
+}
+async inputBlockedEmail(blockedemail : string){
+    const ele = await this.page.locator(this.LoginPage_Elements.email)
+    if(await ele.isVisible()){
+        await ele.fill(blockedemail)
+
+    }
+}
+async verifyInvalidUserName(){
+    const ele = await this.page.locator(this.LoginPage_Elements.incorrectUserName)
+    try {
+        await expect(ele).toContainText("Incorrect user name")
+    } catch (error) {
+        throw new Error(`Wrong user name alert is not visible : ${Error}`)
+    }
+}
+async verifyLockedAccountAlert(){
+    const ele = await this.page.locator(this.LoginPage_Elements.AccountBlockedAlert)
+    try {
+        await expect(ele).toContainText("Your account has been Locked. Please contact the system administrator.")
+    } catch (error) {
+        throw new Error(`Blocked account alert is not visible : ${Error}`)
+    }
 }
  
 }

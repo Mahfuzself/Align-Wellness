@@ -9,5 +9,8 @@
     "validmasteradminpassword" : "Test@1234",
     "validadminusername" : "johnhowarth@yopmail.com",
     "commonpassword" : "Test@1234",
-    "validstandardusername":"jamessmith@yopmail.com"
+    "validstandardusername":"jamessmith@yopmail.com",
+    "doesnotexistmail": "hello@yopmail.com",
+    "wrongpassword": "hello@1234",
+    "inputblockedemail" : "johnosborne@yopmail.com"
 } 

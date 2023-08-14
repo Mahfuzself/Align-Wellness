@@ -1,23 +1,20 @@
 import LoginPage from '@pages/Login.page';
 import { test as baseTest } from '@playwright/test';
-import usemanagementPage from '@pages/usermanagement.page'
 import EventsPage from '@pages/Events.page';
 import companyPage from '@pages/company.page';
 import brokerPage from '@pages/broker.page';
+import AlignwelluserPage from '@pages/Alignwelluser.page';
 const test = baseTest.extend<{
     loginPage: LoginPage;
-    usermanagementPage : usemanagementPage;
     eventsPage : EventsPage;
     clientsPage : companyPage;
     employeeuserPage : companyPage;
     brokerPage : brokerPage;
+    AlignwellPage : AlignwelluserPage;
 }>(
     {
         loginPage: async ({page }, use) => {
                     await use(new LoginPage(page));
-                },
-                usermanagementPage : async({page},use) =>{
-                    await use (new usemanagementPage(page))
                 },
                 eventsPage : async({page},use) =>{
                     await use (new EventsPage(page))
@@ -30,6 +27,9 @@ const test = baseTest.extend<{
                 },
                 brokerPage : async({page},use) =>{
                     await use (new brokerPage(page))
+                },
+                AlignwellPage : async({page},use) =>{
+                    await use (new AlignwelluserPage(page))
                 }
             },
 )

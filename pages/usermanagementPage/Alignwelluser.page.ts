@@ -16,12 +16,14 @@ export default class AlignwelluserPage {
         EmptyUserRoleText: "//div[text()=' User role cannot be empty. ']",
         MasterAdmin : "#userRole",
         InvalidEmailText:"//h4[text()='Email invalid ']",
+        AlignWellUserSearch: "//input[@placeholder='Search ...']",
+        SerchFirstName : "//p[@class='user-name']"
 
     }
     async clickAlignwellUser(){
         const ele = await this.page.locator(this.AlignwellnessuserElements.AlignwellUser)
             await ele.click()
-            await this.page.waitForTimeout(4000)
+            await this.page.waitForTimeout(5000)
        
 
     }
@@ -122,4 +124,26 @@ export default class AlignwelluserPage {
         const testEmail = `${email}${randomString}@yopmail.com`;
         await this.page.locator(this.AlignwellnessuserElements.AddUserEmailField).fill(testEmail)
     }
+    async SearchAlignUser_By_FirstName(){
+      const ele = await this.page.locator(this.AlignwellnessuserElements.AlignWellUserSearch)
+     if(await ele.isVisible()){
+        await ele.fill("Kevin")
+        await this.page.waitForLoadState()
+        await this.page.waitForTimeout(15000)
+        
+     }
+     await expect(await this.page.locator(this.AlignwellnessuserElements.SerchFirstName)).toContainText("Kevin")
+    }
+    async Filter_By_MasterAdmin(){
+        await this.page.locator('//select[@class="form-select"]').selectOption({label:"Master Admin"})
+        await this.page.waitForTimeout(10000)
+     }
+     async Filter_By_Admin(){
+        await this.page.locator('//select[@class="form-select"]').selectOption({label:"Admin"})
+        await this.page.waitForTimeout(10000)
+     }
+     async Filter_By_Standard(){
+        await this.page.locator('//select[@class="form-select"]').selectOption({label:"Standard"})
+        await this.page.waitForTimeout(10000)
+     }
 }

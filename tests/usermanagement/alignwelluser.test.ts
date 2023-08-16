@@ -35,7 +35,7 @@ test("TC - 02 : Validate Align well user empty role message.",async({page,loginP
         await AlignwellPage.clickEmptyRoleIcon()
         await AlignwellPage.verifyEmptyRoleText()
 })
-test("Validate Align well user invalid email message.",async({page,loginPage,AlignwellPage})=>{
+test("TC - 03 : Validate Align well user invalid email message.",async({page,loginPage,AlignwellPage})=>{
     await page.goto("/login")
     await page.waitForTimeout(4000)
     await page.reload()
@@ -53,7 +53,7 @@ test("Validate Align well user invalid email message.",async({page,loginPage,Ali
         await page.waitForTimeout(4000)
         // await AlignwellPage.verifyInvalidEmail()
 })
-test.only("Validate Add new user is successfully added.",async({page,loginPage,AlignwellPage})=>{
+test("TC - 04 : Validate Add new user is successfully added.",async({page,loginPage,AlignwellPage})=>{
     //await AlignwellPage.RendomEmail()
     await page.goto("/login")
     await page.waitForTimeout(4000)
@@ -70,4 +70,32 @@ test.only("Validate Add new user is successfully added.",async({page,loginPage,A
         await AlignwellPage.selectMasterAdminUser()
         await AlignwellPage.clickAddNewUserBtn()
         await page.waitForTimeout(5000)
+})
+test("TC - 05 : Validate Align well user search field is working..",async({page,loginPage,AlignwellPage})=>{
+    //await AlignwellPage.RendomEmail()
+    await page.goto("/login")
+    await page.waitForTimeout(4000)
+    await page.reload()
+    await loginPage.login(data.validstandardusername, data.commonpassword)
+    test.step("Now click usermanagementPage",async() => {
+        await AlignwellPage.clickUserManagementPage()
+        await page.waitForTimeout(3000)
+    })
+        await AlignwellPage.clickAlignwellUser()
+        await page.waitForTimeout(3000)
+        await AlignwellPage.SearchAlignUser_By_FirstName()
+})
+test.only("TC - 06 : Validate Align well user search field is working.",async({page,loginPage,AlignwellPage})=>{
+    //await AlignwellPage.RendomEmail()
+    await page.goto("/login")
+    await page.waitForTimeout(4000)
+    await page.reload()
+    await loginPage.login(data.validstandardusername, data.commonpassword)
+        await AlignwellPage.clickUserManagementPage()
+        await page.waitForTimeout(3000)
+        await AlignwellPage.clickAlignwellUser()
+        await page.waitForTimeout(4000)
+        await AlignwellPage.Filter_By_MasterAdmin()
+        await AlignwellPage.Filter_By_Admin()
+        await AlignwellPage.Filter_By_Standard()
 })

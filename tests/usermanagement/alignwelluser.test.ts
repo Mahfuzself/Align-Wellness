@@ -1,7 +1,6 @@
 import test, { expect } from "@fixtures/basepages";
 import * as data from "testData/login.cred.json"
 import { Page } from '@playwright/test';
-import AlignwelluserPage from '../../pages/usermanagementPage/Alignwelluser.page';
 test("TC - 01 : Validate Align well user invalid email message.",async({page,loginPage,AlignwellPage})=>{
     await page.goto("/login")
     await page.waitForTimeout(4000)
@@ -85,7 +84,7 @@ test("TC - 05 : Validate Align well user search field is working..",async({page,
         await page.waitForTimeout(3000)
         await AlignwellPage.SearchAlignUser_By_FirstName()
 })
-test.only("TC - 06 : Validate Align well user search field is working.",async({page,loginPage,AlignwellPage})=>{
+test("TC - 06 : Validate Align well user search field is working.",async({page,loginPage,AlignwellPage})=>{
     //await AlignwellPage.RendomEmail()
     await page.goto("/login")
     await page.waitForTimeout(4000)
@@ -98,4 +97,49 @@ test.only("TC - 06 : Validate Align well user search field is working.",async({p
         await AlignwellPage.Filter_By_MasterAdmin()
         await AlignwellPage.Filter_By_Admin()
         await AlignwellPage.Filter_By_Standard()
+})
+test.skip("TC - 07 : Validate Align well user column wise sorting is woorking.",async({page,loginPage,AlignwellPage})=>{
+    await page.goto("/login")
+    await page.waitForTimeout(4000)
+    await page.reload()
+    await loginPage.login(data.validstandardusername, data.commonpassword)
+        await AlignwellPage.clickUserManagementPage()
+        await page.waitForTimeout(3000)
+        await AlignwellPage.clickAlignwellUser()
+        await page.waitForTimeout(4000)
+})
+test("TC - 08 : Validate Align well user  Resend link is working.",async({page,loginPage,AlignwellPage})=>{
+    await page.goto("/login")
+    await page.waitForTimeout(4000)
+    await page.reload()
+    await loginPage.login(data.validstandardusername, data.commonpassword)
+        await AlignwellPage.clickUserManagementPage()
+        await page.waitForTimeout(3000)
+        await AlignwellPage.clickAlignwellUser()
+        await page.waitForTimeout(7000)
+        await AlignwellPage.ClickResendLink()
+        await AlignwellPage.verifyResendLinkSuccessfullyMessage()
+})
+test.skip("TC - 09 : Validate Align well user edit button is working.",async({page,loginPage,AlignwellPage})=>{
+    await page.goto("/login")
+    await page.waitForTimeout(4000)
+    await page.reload()
+    await loginPage.login(data.validstandardusername, data.commonpassword)
+        await AlignwellPage.clickUserManagementPage()
+        await page.waitForTimeout(3000)
+        await AlignwellPage.clickAlignwellUser()
+        await page.waitForTimeout(7000)
+        await AlignwellPage.ClickResendLink()
+        await AlignwellPage.verifyResendLinkSuccessfullyMessage()
+})
+test.only("TC - 10 : Validate Align well user deactivate button is working.",async({page,loginPage,AlignwellPage})=>{
+    await page.goto("/login")
+    await page.waitForTimeout(4000)
+    await page.reload()
+    await loginPage.login(data.validstandardusername, data.commonpassword)
+        await AlignwellPage.clickUserManagementPage()
+        await page.waitForTimeout(3000)
+        await AlignwellPage.clickAlignwellUser()
+        await page.waitForTimeout(7000)
+        await AlignwellPage.ClickDeactivateAndActivate()
 })

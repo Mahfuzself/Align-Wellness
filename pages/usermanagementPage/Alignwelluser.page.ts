@@ -17,7 +17,15 @@ export default class AlignwelluserPage {
         MasterAdmin : "#userRole",
         InvalidEmailText:"//h4[text()='Email invalid ']",
         AlignWellUserSearch: "//input[@placeholder='Search ...']",
-        SerchFirstName : "//p[@class='user-name']"
+        SerchFirstName : "//p[@class='user-name']",
+        columnArrowup:"//i[@class='d-inline-flex icon-arrow-up']",
+        columnArrowdown:"//i[@class='d-inline-flex icon-arrow-down']",
+        Status_Active:"//div[text()=' Active ']",
+        Status_Deactive:"//div[text()=' Pending ']",
+        ActionThreeDot:'//div[@class="dropdown"]',//td[text()='Adam Gilchrist']/following-sibling::td,ralphmcmillen@yopmail.com
+        ActionThreeForResendLink:"//td[text()=' ralphmcmillen@yopmail.com ']/following-sibling::td[3]",
+        ResendLinkSuccessfullyMessage:"//h4[text()='Link has been resend successfully']",
+        DeactivateAlignUser:"//td[text()=' jonathanblunt@yopmail.com ']/following-sibling::td[3]",
 
     }
     async clickAlignwellUser(){
@@ -60,16 +68,6 @@ export default class AlignwelluserPage {
             await ele.click()
             console.log("Hello")
     }
-    async verifyEmptyEmailText(){
-        const ele = await this.page.locator(this.AlignwellnessuserElements.emptyEmailText)
-        try {
-            await this.page.waitForTimeout(1000)
-             await expect.soft(ele).toContainText("Email cannot be empty.")
-             console.log("Successfully verified!")
-        } catch (error) {
-            throw new Error(`Align well add user empty email message element is not visible, Could not found loctor : ${Error}`)
-        }
-    }
     async verifyEmptyRoleText(){
         const ele = await this.page.locator(this.AlignwellnessuserElements.EmptyUserRoleText)
         try {
@@ -78,6 +76,16 @@ export default class AlignwelluserPage {
              console.log("Successfully verified!")
         } catch (error) {
             throw new Error(`Align well add user empty role text element is not visible, Could not found loctor : ${Error}`)
+        }
+    }
+    async verifyEmptyEmailText(){
+        const ele = await this.page.locator(this.AlignwellnessuserElements.emptyEmailText)
+        try {
+            await this.page.waitForTimeout(1000)
+             await expect.soft(ele).toContainText("Email cannot be empty.")
+             console.log("Successfully verified!")
+        } catch (error) {
+            throw new Error(`Align well add user empty email message element is not visible, Could not found loctor : ${Error}`)
         }
     }
     async clickAddNewUserBtn(){
@@ -145,5 +153,31 @@ export default class AlignwelluserPage {
      async Filter_By_Standard(){
         await this.page.locator('//select[@class="form-select"]').selectOption({label:"Standard"})
         await this.page.waitForTimeout(10000)
+     }
+     async ClickResendLink(){
+        await this.page.locator(this.AlignwellnessuserElements.ActionThreeForResendLink).click()
+        await this.page.waitForTimeout(5000)
+        await this.page.locator("(//div[@class='dropdown-menu show']//button)[2]").click()
+        await this.page.waitForTimeout(1000)
+        await this.page.locator("//button[text()=' Yes ']").click()
+        await this.page.waitForTimeout(5000)
+     }
+     async verifyResendLinkSuccessfullyMessage(){
+        await expect(this.page.locator(this.AlignwellnessuserElements.ResendLinkSuccessfullyMessage)).toContainText("Link has been resend successfully")
+        await this.page.waitForTimeout(1000)
+     }
+     async ClickDeactivateAndActivate(){
+        await this.page.locator(this.AlignwellnessuserElements.DeactivateAlignUser).click()
+        await this.page.waitForTimeout(5000)
+        await this.page.locator("(//div[@class='dropdown-menu show']//button)[2]").click()
+        await this.page.waitForTimeout(3000)
+        await this.page.locator("//button[text()=' Yes ']").click()
+        await this.page.waitForTimeout(1000)
+        await this.page.locator(this.AlignwellnessuserElements.DeactivateAlignUser).click()
+        await this.page.waitForTimeout(1000)
+        await this.page.locator("(//div[@class='dropdown-menu show']//button)[2]").click()
+        await this.page.waitForTimeout(3000)
+        await this.page.locator("//button[text()=' Yes ']").click()
+        await this.page.waitForTimeout(2000)
      }
 }

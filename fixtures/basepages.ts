@@ -4,6 +4,7 @@ import EventsPage from '@pages/Events.page';
 import companyPage from '@pages/company.page';
 import brokerPage from '@pages/broker.page';
 import AlignwelluserPage from '@pages/Alignwelluser.page';
+import ContractorPage from '@pages/Contractor.page';
 const test = baseTest.extend<{
     loginPage: LoginPage;
     eventsPage : EventsPage;
@@ -11,6 +12,8 @@ const test = baseTest.extend<{
     employeeuserPage : companyPage;
     brokerPage : brokerPage;
     AlignwellPage : AlignwelluserPage;
+    ContactorPage : ContractorPage;
+
 }>(
     {
         loginPage: async ({page }, use) => {
@@ -30,6 +33,9 @@ const test = baseTest.extend<{
                 },
                 AlignwellPage : async({page},use) =>{
                     await use (new AlignwelluserPage(page))
+                },
+                ContactorPage : async({page},use) =>{
+                    await use (new ContractorPage(page))
                 }
             },
 )

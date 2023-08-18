@@ -1,5 +1,4 @@
 import { expect, Page } from "@playwright/test";
-import test from '../../fixtures/basepages';
 export default class EventsPage {
     private page: Page;
     // static login: any;

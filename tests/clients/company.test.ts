@@ -1,7 +1,11 @@
 import test, { expect } from "@fixtures/basepages";
 import * as data from "testData/login.cred.json"
 import { Page } from '@playwright/test';
-test("Validate company added successfully",async({page,loginPage,clientsPage}) =>{
+test("TC - 01 : Validate empty company name alert message.",async({page,loginPage,companyPage}) =>{
   await page.goto("/login")
-  await loginPage.login(data.validusername,data.validpassword)
+  await loginPage.login(data.validstandardusername, data.commonpassword)
+  await companyPage.clickClientsPage()
+  await companyPage.clickCompany()
+  await companyPage.clickAddCompany()
+  
 })

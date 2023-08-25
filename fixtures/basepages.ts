@@ -15,6 +15,7 @@ const test = baseTest.extend<{
     AlignwellPage : AlignwelluserPage;
     ContactorPage : ContractorPage;
     HealthcareProviderPage : HealthcareProviderPage;
+    companyPage : companyPage
 
 }>(
     {
@@ -41,6 +42,9 @@ const test = baseTest.extend<{
                 },
                 HealthcareProviderPage : async({page},use) =>{
                     await use (new HealthcareProviderPage(page))
+                },
+                companyPage : async({page},use) =>{
+                    await use (new companyPage(page))
                 }
             },
 )

@@ -60,7 +60,7 @@ test("TC - 05 : Validate providers status wise filtering.",async({page,loginPage
     await HealthcareProviderPage.SelectStatus_Pending()
     await HealthcareProviderPage.SelectStatus()
 })
-test.only("TC - 06 : Validate providers type wise filtering.",async({page,loginPage,HealthcareProviderPage,AlignwellPage}) =>{
+test("TC - 06 : Validate providers type wise filtering.",async({page,loginPage,HealthcareProviderPage,AlignwellPage}) =>{
     await page.goto("/login")
     await page.waitForTimeout(4000)
     await page.reload()
@@ -78,5 +78,11 @@ test.only("TC - 06 :Validate providers column wise sorting is working.",async({p
     await loginPage.login(data.validstandardusername, data.commonpassword)
     await AlignwellPage.clickUserManagementPage()
     await HealthcareProviderPage.clickHealthcareProviderPage()
+    await HealthcareProviderPage.HealthProviderName_sortingOrder()
+    await HealthcareProviderPage.HealthycareProvider_PhoneNumber_sorting()
+    await HealthcareProviderPage.Healtcareprovider_EmailAddress_sortingOrder()
+    await HealthcareProviderPage.HealthProviderName_sortingOrder()
+    await HealthcareProviderPage.Healtcareprovider_TaskCompletion_sortingOrder()
+    await HealthcareProviderPage.Healtcareprovider_Status_sortingOrder()
     
 })

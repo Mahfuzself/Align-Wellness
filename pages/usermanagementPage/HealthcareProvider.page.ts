@@ -20,19 +20,19 @@ export default class HealthcareProviderPage {
         HealthcareProviderTypeDropdown:"#typeId",
         HealthCareProviderColumn_ArrowDown:"//i[@class='d-inline-flex icon-arrow-down']",
         HealthCareProviderColumn_ArrowUp:"//i[@class='d-inline-flex icon-arrow-up']",
-        ProviderName_AcendingOrder:' (//th[text()=" Provider Name "]//i)[1]',
-        ProviderMobileNumber_AcendingOrder:' (//th[text()=" Mobile Number "]//i)[1]',
-        ProviderEmailAddress_AcendingOrder:'(//th[text()=" Email Address "]//i)[1]',
-        ProviderType_AcendingOrdered:'(//th[text()=" Provider Type "]//i)[1]',
-        ProviderTaskCompletion_AcendingOrder:'(//th[text()=" Task Completion "]//i)[1]',
-        ProviderStatus_AcendingOrder:'(//th[text()=" Status "]//i)[1]',
+        ProviderName_sortingOrder:' (//th[text()=" Provider Name "]//i)[1]',
+        ProviderMobileNumber_sortingOrder:' (//th[text()=" Mobile Number "]//i)[1]',
+        ProviderEmailAddress_sortingOrder:'(//th[text()=" Email Address "]//i)[1]',
+        ProviderType_sortingOrdered:'(//th[text()=" Provider Type "]//i)[1]',
+        ProviderTaskCompletion_sortingOrder:'(//th[text()=" Task Completion "]//i)[1]',
+        ProviderStatus_sortingOrder:'(//th[text()=" Status "]//i)[1]',
         
     }
     async clickHealthcareProviderPage(){
         const ele = await this.page.locator(this.HealtcareProviderElements.healthcareprovider)
         try {
             await ele.click()
-            await this.page.waitForTimeout(4000)
+            await this.page.waitForTimeout(7000)
         } catch (error) {
             throw new Error(`Healthcare provider element is not visible, could not find locotor : ${error}`)
         }
@@ -142,31 +142,82 @@ export default class HealthcareProviderPage {
         await this.page.locator(this.HealtcareProviderElements.HealthcareProviderTypeDropdown).selectOption({label : "Male Nurse"})
         await this.page.waitForTimeout(10000)
     }
-    async HealthProviderName_AcendingOrder(){
-        const ele = await this.page.locator(this.HealtcareProviderElements.ProviderName_AcendingOrder)
+    async HealthProviderName_sortingOrder(){
+        const ele = await this.page.locator(this.HealtcareProviderElements.ProviderName_sortingOrder)
         try {
             await ele.click()
-            await this.page.waitForTimeout(9000)
+            await this.page.waitForTimeout(10000)
+            await ele.click()
+            await this.page.waitForTimeout(10000)
+            await ele.click()
+            await this.page.waitForTimeout(10000)
         } catch (error) {
-            throw new Error(`User Management | Healthcare Provider | Provider name acending order element is not visible , could not found locotor  : ${Error}`)
+            throw new Error(`User Management | Healthcare Provider | Provider name sorting order element is not visible , could not found locotor  : ${Error}`)
         }
     }
-    async HealthycareProvider_PhoneNumber_AcendingOrder(){
-        const ele = await this.page.locator(this.HealtcareProviderElements.ProviderMobileNumber_AcendingOrder)
+    async HealthycareProvider_PhoneNumber_sorting(){
+        const ele = await this.page.locator(this.HealtcareProviderElements.ProviderMobileNumber_sortingOrder)
         try {
             await ele.click()
-            await this.page.waitForTimeout(9000)
+            await this.page.waitForTimeout(10000)
+            await ele.click()
+            await this.page.waitForTimeout(10000)
+            await ele.click()
+            await this.page.waitForTimeout(10000)
         } catch (error) {
-            throw new Error(`User Management | Healthcare Provider | Provider Phone number acending order element is not visible , could not found locotor  : ${Error}`)
+            throw new Error(`User Management | Healthcare Provider | Provider Phone number sorting order element is not visible , could not found locotor  : ${Error}`)
         }
     }
-    async Healtcareprovider_EmailAddress_AcendingOrder(){
-        const ele = await this.page.locator(this.HealtcareProviderElements.ProviderEmailAddress_AcendingOrder)
+    async Healtcareprovider_EmailAddress_sortingOrder(){
+        const ele = await this.page.locator(this.HealtcareProviderElements.ProviderEmailAddress_sortingOrder)
         try {
             await ele.click()
-            await this.page.waitForTimeout(9000)
+            await this.page.waitForTimeout(10000)
+            await ele.click()
+            await this.page.waitForTimeout(10000)
+            await ele.click()
+            await this.page.waitForTimeout(10000)
         } catch (error) {
-            throw new Error(`User Management | Healthcare Provider | Provider email address acending order element is not visible , could not found locotor  : ${Error}`)
+            throw new Error(`User Management | Healthcare Provider | Provider email address sorting order element is not visible , could not found locotor  : ${Error}`)
         }
-    }    
+    }   
+    async Healtcareprovider_ProviderType_sortingOrder(){
+        const ele = await this.page.locator(this.HealtcareProviderElements.ProviderType_sortingOrdered)
+        try {
+            await ele.click()
+            await this.page.waitForTimeout(10000)
+            await ele.click()
+            await this.page.waitForTimeout(10000)
+            await ele.click()
+            await this.page.waitForTimeout(10000)
+        } catch (error) {
+            throw new Error(`User Management | Healthcare Provider | Provider type sorting order element is not visible , could not found locotor  : ${Error}`)
+        }
+    }   
+    async Healtcareprovider_TaskCompletion_sortingOrder(){
+        const ele = await this.page.locator(this.HealtcareProviderElements.ProviderTaskCompletion_sortingOrder)
+        try {
+            await ele.click()
+            await this.page.waitForTimeout(10000)
+            await ele.click()
+            await this.page.waitForTimeout(10000)
+            await ele.click()
+            await this.page.waitForTimeout(10000)
+        } catch (error) {
+            throw new Error(`User Management | Healthcare Provider | Provider task completion sorting order element is not visible , could not found locotor  : ${Error}`)
+        }
+    }  
+    async Healtcareprovider_Status_sortingOrder(){
+        const ele = await this.page.locator(this.HealtcareProviderElements.ProviderStatus_sortingOrder)
+        try {
+            await ele.click()
+            await this.page.waitForTimeout(10000)
+            await ele.click()
+            await this.page.waitForTimeout(10000)
+            await ele.click()
+            await this.page.waitForTimeout(10000)
+        } catch (error) {
+            throw new Error(`User Management | Healthcare Provider | Provider status sorting order element is not visible , could not found locotor  : ${Error}`)
+        }
+    }  
 }

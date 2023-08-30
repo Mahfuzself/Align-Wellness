@@ -71,7 +71,7 @@ test("TC - 06 : Validate providers type wise filtering.",async({page,loginPage,H
     await HealthcareProviderPage.HealthCareProviderType_FemaleNurse()
     await HealthcareProviderPage.HealthCareProviderType_MaleNurse()
 })
-test.only("TC - 06 :Validate providers column wise sorting is working.",async({page,loginPage,HealthcareProviderPage,AlignwellPage}) =>{
+test("TC - 06 :Validate providers column wise sorting is working.",async({page,loginPage,HealthcareProviderPage,AlignwellPage}) =>{
     await page.goto("/login")
     await page.waitForTimeout(4000)
     await page.reload()

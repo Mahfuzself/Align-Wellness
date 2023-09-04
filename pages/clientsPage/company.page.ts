@@ -6,10 +6,9 @@ export default class companyPage{
         this.page = page;
     }
     private CompanyPage_Elements = {
-
         Company:"//a[contains(text(),'Company')]",
         AddCompany:"//button[text()=' Add Company ']",
-        inputCompanyName:"Companyname",
+        inputCompanyName:"#Companyname",
         inputAdress:"address",
         inputSuite_Apt_Location:"SuitAptLocation",
         inputContactprsonFirstName:"Firstname",
@@ -51,6 +50,7 @@ export default class companyPage{
         }
     }
     async clickAddCompany(){
+        await this.page.waitForTimeout(5000)
         const ele = await this.page.locator(this.CompanyPage_Elements.AddCompany)
         try {
             await ele.click()
@@ -168,5 +168,25 @@ export default class companyPage{
         } catch (error) {
             throw new Error(`Clients | Company | Add Company | input email field | Company name email field element is not visible, could not found locotor : ${error}`)
         }
+    }
+    async InputCompanyName(){
+        const rendomComapnyName = "company"+new Date().getFullYear()
+        const ele = await this.page.locator(this.CompanyPage_Elements.inputCompanyName)
+        try {
+             await ele.fill(rendomComapnyName)
+             await this.page.waitForTimeout(4000)
+        } catch (error) {
+            throw new Error(`Clients | Company | Add Company | input company field | Company name field element is not visible, could not found locotor : ${error}`)
+        }
+
+    }
+    async SelectCompanyType_Fintech(){
+       const ele = await this.page.locator("#companyType")
+       try {
+        await this.page.locator("#companyType").selectOption({label:"Fintech"})
+        await this.page.waitForTimeout(2000)
+       } catch (error) {
+        throw new Error(`Clients | Company | Add Company | input company field | Company name field element is not visible, could not found locotor : ${error}`)
+       }
     }
 }

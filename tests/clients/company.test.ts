@@ -56,7 +56,7 @@ test("TC - 05 : Validate company contact person email empty alert message.",asyn
   await companyPage.verifyEmailAlertText()
   
 })
-test.only("TC - 06 : Validate invalid email address format alert message.",async({page,loginPage,companyPage}) =>{
+test("TC - 06 : Validate invalid email address format alert message.",async({page,loginPage,companyPage}) =>{
   await page.goto("/login")
   await loginPage.login(data.validstandardusername, data.commonpassword)
   await companyPage.clickClientsPage()
@@ -66,5 +66,15 @@ test.only("TC - 06 : Validate invalid email address format alert message.",async
   await companyPage.InputInvalidEmail()
   await companyPage.clickEmptyAlertEmailIcon()
   await companyPage.verifyInvalidEmailFormatText()
+  
+})
+test.only("TC - 07 : Validate company name successfully added.",async({page,loginPage,companyPage}) =>{
+  await page.goto("/login")
+  await loginPage.login(data.validstandardusername, data.commonpassword)
+  await companyPage.clickClientsPage()
+  await companyPage.clickCompany()
+  await companyPage.clickAddCompany()
+  await companyPage.InputCompanyName()
+  await companyPage.SelectCompanyType_Fintech()
   
 })

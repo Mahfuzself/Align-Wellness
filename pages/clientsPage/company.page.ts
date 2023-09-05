@@ -43,6 +43,7 @@ export default class companyPage{
         TotalEmployee_Sorting:"//th[text()=' Total Employee ']//i",
         Status_Sorting : "//th[text()=' Status ']//i",
         CompanyName_NeoGen_ActionThreedot:'(//tr[@class="cursor-pointer"])[15]/td[7]',
+        CompanyName_Postepay_ActionThreedot:"//tr[14]/td[2]/following-sibling:: td[5]"
         
 
 
@@ -341,8 +342,16 @@ export default class companyPage{
             await this.page.locator(this.CompanyPage_Elements.CompanyName_NeoGen_ActionThreedot).click()
             await this.page.waitForTimeout(1000)
             console.log("Hellow")
+            
         }
         
+    }
+    async clickCompany_Postepay_ActionThreeDot(){
+        const ele =  await this.page.locator('//tr[14]/td[2]/following-sibling:: td[4]/div[text()=" Active "]').isVisible()
+           if(ele == true){
+            await this.page.locator(this.CompanyPage_Elements.CompanyName_Postepay_ActionThreedot).click()
+            await this.page.waitForTimeout(1000)
+           }
     }
    async clickResendLink(){
      await this.page.locator("(//div[@class='dropdown-menu show']//button)[2]").click()
@@ -358,4 +367,14 @@ export default class companyPage{
       await expect.soft(ele).toContainText("Link has been resend successfully")
       await this.page.waitForTimeout(1000)
    }
+   async clickDeactivatedBtn(){
+    await this.page.locator("//div[@class='dropdown-menu show']//button[1]").click()
+    await this.page.waitForTimeout(1000)
+    const ele = await this.page.locator("//div[text()=' Do you want to deactivate this company? ']")
+    await expect.soft(ele).toContainText("Do you want to deactivate this company?")
+    //click yes
+    await this.page.locator("//button[text()=' Yes ']").click()
+    await this.page.waitForTimeout(1000)
+   }
+   
 }

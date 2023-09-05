@@ -117,7 +117,18 @@ test("TC - 10 : Validate company name information column wise sorting is working
   await companyPage.ColumnWise_Soring_Company_Status()
   
 })
-test.only("TC - 11 : Validate company user successfully resend deactivated.",async({page,loginPage,companyPage}) =>{
+test.only("TC - 11 : Validate company activate link successfully resend.",async({page,loginPage,companyPage}) =>{
+  await page.goto("/login")
+  await loginPage.login(data.validstandardusername, data.commonpassword)
+  await companyPage.clickClientsPage()
+  await companyPage.clickCompany()
+  await companyPage.clickCompany_NeoGen_ActionThreeDot()
+  await companyPage.clickResendLink()
+  await companyPage.verifyResendLinkSuccessfully()
+  
+  
+})
+test.only("TC - 12 : Validate company user successfully deactivated.",async({page,loginPage,companyPage}) =>{
   await page.goto("/login")
   await loginPage.login(data.validstandardusername, data.commonpassword)
   await companyPage.clickClientsPage()

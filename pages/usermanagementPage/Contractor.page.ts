@@ -18,6 +18,7 @@ export default class ContractorPage {
         Activate:"//button[text()=' Activate ']",
         Deactivate:"//div[@class='dropdown-menu show']//button[1]",
         ResendLink: "//div[@class='dropdown-menu show']//button[1]",
+        
     }
     async clickContractorPage(){
         const ele = this.page.locator(this.ContractorPage_Elements.ContractorPage)

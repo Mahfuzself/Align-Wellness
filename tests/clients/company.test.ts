@@ -68,13 +68,63 @@ test("TC - 06 : Validate invalid email address format alert message.",async({pag
   await companyPage.verifyInvalidEmailFormatText()
   
 })
-test.only("TC - 07 : Validate company name successfully added.",async({page,loginPage,companyPage}) =>{
+test("TC - 07 : Validate company name successfully added.",async({page,loginPage,companyPage}) =>{
   await page.goto("/login")
   await loginPage.login(data.validstandardusername, data.commonpassword)
   await companyPage.clickClientsPage()
   await companyPage.clickCompany()
   await companyPage.clickAddCompany()
   await companyPage.InputCompanyName()
-  await companyPage.SelectCompanyType_Fintech()
+  // await companyPage.SelectCompanyType_Fintech()
+  // await companyPage.upload_Company_ProfileImages()
+  // await companyPage.upload_Company_BannerImages()
+  // await companyPage.Select_Automation_broker()
+  // await companyPage.InputCompanyContactPerson_FirstName()
+  // await companyPage.InputCompanyContactPerson_LastName()
+  // await companyPage.InputCompanyContactPerson_Email()
+  // await companyPage.InputCompanyContactPerson_PhoneNumber_BD()
+  await companyPage.inputCompanyAddress()
+  await companyPage.clickAddCompanySubmittBtn()
+  
+})
+test("TC - 08 : Validate Company name search field is working.",async({page,loginPage,companyPage}) =>{
+  await page.goto("/login")
+  await loginPage.login(data.validstandardusername, data.commonpassword)
+  await companyPage.clickClientsPage()
+  await companyPage.clickCompany()
+  await companyPage.CompanyNameSearch_By_FullName()
+  
+})
+test("TC - 09 : Validate Compnay name status wise filtering working.",async({page,loginPage,companyPage}) =>{
+  await page.goto("/login")
+  await loginPage.login(data.validstandardusername, data.commonpassword)
+  await companyPage.clickClientsPage()
+  await companyPage.clickCompany()
+  await companyPage.StatuswiseFiler_Pending()
+  await companyPage.StatuswiseFiler_Active()
+  await companyPage.StatuswiseFiler_Inactive()
+  await companyPage.StatuswiseFiler_Inprogress()
+  
+})
+test("TC - 10 : Validate company name information column wise sorting is working.",async({page,loginPage,companyPage}) =>{
+  await page.goto("/login")
+  await loginPage.login(data.validstandardusername, data.commonpassword)
+  await companyPage.clickClientsPage()
+  await companyPage.clickCompany()
+  await companyPage.ColumnWise_Soring_CompanyName()
+  await companyPage.ColumnWise_Soring_CompanyName_Address()
+  await companyPage.ColumnWise_Soring_Company_TotalEmployee()
+  await companyPage.ColumnWise_Soring_Company_Status()
+  
+})
+test.only("TC - 11 : Validate company user successfully resend deactivated.",async({page,loginPage,companyPage}) =>{
+  await page.goto("/login")
+  await loginPage.login(data.validstandardusername, data.commonpassword)
+  await companyPage.clickClientsPage()
+  await companyPage.clickCompany()
+  await companyPage.clickCompany_NeoGen_ActionThreeDot()
+  await companyPage.clickResendLink()
+  await companyPage.verifyResendLinkSuccessfully()
+  
   
 })

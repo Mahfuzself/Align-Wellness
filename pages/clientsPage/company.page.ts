@@ -1,4 +1,4 @@
-import { expect, Page } from "@playwright/test";
+import { expect, FileChooser, Page } from "@playwright/test";
 export default class companyPage{
     private page: Page;
     // static login: any;
@@ -33,6 +33,16 @@ export default class companyPage{
         InvalidEmailFormatText:"//span[text()='Invalid email format']",
         CompanyContactPersonEmailField:"//input[@placeholder='Please enter your email']",
         CompanyNameInputField: "//input[@placeholder='Please type your company name']",
+        ContactPerson_FirstName:"#Firstname",
+        ContactPerson_LastName:"#Lastname",
+        ContactPerson_Email:"#Email",
+        ContactPerson_PhoneNumber:"#InputPhone",
+        CompanyAddress:"//input[@placeholder='Please enter your company address']",
+        CompanyName_Sorting:"//th[text()=' Company Name ']//i",
+        Address_Sorting:"//th[text()=' Address ']//i",
+        TotalEmployee_Sorting:"//th[text()=' Total Employee ']//i",
+        Status_Sorting : "//th[text()=' Status ']//i",
+        CompanyName_NeoGen_ActionThreedot:'(//tr[@class="cursor-pointer"])[15]/td[7]',
         
 
 
@@ -45,12 +55,13 @@ export default class companyPage{
         const ele = await this.page.locator(this.CompanyPage_Elements.Company)
         try {
             await ele.click()
+            await this.page.waitForTimeout(5000)
         } catch (error) {
             throw new Error(`Clients | Company element is not visible, could not found locetor : ${error}`)
         }
     }
     async clickAddCompany(){
-        await this.page.waitForTimeout(5000)
+        await this.page.waitForTimeout(8000)
         const ele = await this.page.locator(this.CompanyPage_Elements.AddCompany)
         try {
             await ele.click()
@@ -112,7 +123,7 @@ export default class companyPage{
         const ele = await this.page.locator(this.CompanyPage_Elements.AddCompanySubmittBtn)
         try {
             await ele.click()
-            await this.page.waitForTimeout(2000)
+            await this.page.waitForTimeout(10000)
         } catch (error) {
             throw new Error(`Clients | Company | Add Company | Add company submitt | Add company save button element is not visible, could not found locetor : ${error}`)
         }
@@ -170,7 +181,7 @@ export default class companyPage{
         }
     }
     async InputCompanyName(){
-        const rendomComapnyName = "company"+new Date().getFullYear()
+        const rendomComapnyName = "company"+new Date().getSeconds()
         const ele = await this.page.locator(this.CompanyPage_Elements.inputCompanyName)
         try {
              await ele.fill(rendomComapnyName)
@@ -189,4 +200,162 @@ export default class companyPage{
         throw new Error(`Clients | Company | Add Company | input company field | Company name field element is not visible, could not found locotor : ${error}`)
        }
     }
+    async upload_Company_ProfileImages() {
+        // const filePath0 = "testData/Images/company.jpg"
+        const fileChooserPromise = this.page.waitForEvent('filechooser');
+        await this.page.locator("(//div[contains(@class,'col-12 col-md-6')])[1]").click();
+        const fileChooser = await fileChooserPromise;
+        await fileChooser.setFiles('./testData/Images/company.jpg');
+         await this.page.waitForTimeout(15000)
+         await this.page.waitForLoadState()
+        
+    }
+    async upload_Company_BannerImages() {
+        // const filePath0 = "testData/Images/banner.jpg"
+        const fileChooserPromise = this.page.waitForEvent('filechooser');
+        await this.page.locator("(//div[contains(@class,'col-12 col-md-6')])[2]").click();
+        const fileChooser = await fileChooserPromise;
+        await fileChooser.setFiles('./testData/Images/banner.jpg');
+         await this.page.waitForTimeout(15000)
+         await this.page.waitForLoadState()
+        
+    }
+    async Select_Automation_broker(){
+        await this.page.locator("#broker").selectOption({label:"Automation_Broker"})
+        await this.page.waitForTimeout(2000)
+    }
+    async InputCompanyContactPerson_FirstName(){
+        const rendomContactFirstName = "FirstName"+new Date().getSeconds()
+        const ele = await this.page.locator(this.CompanyPage_Elements.ContactPerson_FirstName)
+        try {
+             await ele.fill(rendomContactFirstName)
+             await this.page.waitForTimeout(4000)
+        } catch (error) {
+            throw new Error(`Clients | Company | Add Company | input contact person first name  | input contact person first name field element is not visible, could not found locotor : ${error}`)
+        }
+
+    }
+    async InputCompanyContactPerson_LastName(){
+        const rendomContactLastName = "LastName"+new Date().getSeconds()
+        const ele = await this.page.locator(this.CompanyPage_Elements.ContactPerson_LastName)
+        try {
+             await ele.fill(rendomContactLastName)
+             await this.page.waitForTimeout(4000)
+        } catch (error) {
+            throw new Error(`Clients | Company | Add Company | input contact person last name  | input contact person last name field element is not visible, could not found locotor : ${error}`)
+        }
+
+    }
+    async InputCompanyContactPerson_Email(){
+        let rendomEmail = "lastName+firstname"+new Date().getSeconds()
+        const ele = await this.page.locator(this.CompanyPage_Elements.ContactPerson_Email)
+        try {
+            rendomEmail = rendomEmail+"@yopmail.com"
+             await ele.fill(rendomEmail)
+             await this.page.waitForTimeout(4000)
+        } catch (error) {
+            throw new Error(`Clients | Company | Add Company | input contact person email  | input contact person email field element is not visible, could not found locotor : ${error}`)
+        }
+
+    }
+    async InputCompanyContactPerson_PhoneNumber_BD(){
+       
+       await this.page.locator('//span[@class="select2-selection__arrow"]').click()
+       await this.page.waitForTimeout(1000)
+       await this.page.locator("//input[@type='search']").fill("BD")
+       await this.page.keyboard.press("Enter")
+       await this.page.waitForTimeout(2000)
+       await this.page.locator("input[name='InputPhone']").fill("01568703919")
+    
+
+    }
+    async inputCompanyAddress(){
+       const ele =  await this.page.locator(this.CompanyPage_Elements.CompanyAddress)
+       try {
+          await ele.fill("Mirpur-1")
+          await this.page.waitForTimeout(3000)
+          await this.page.keyboard.press("Enter")
+          await this.page.waitForTimeout(1000)
+       } catch (error) {
+        throw new Error(`Clients | Company | Add Company | input company address  | input company address input field element is not visible, could not found locotor : ${error}`)
+       }
+    }
+    async CompanyNameSearch_By_FullName(){
+        await this.page.locator("//input[@placeholder='Search ...']").fill("Gentale Park")
+        await this.page.waitForTimeout(2000)
+        const ele = await this.page.locator('//p[text()="Gentale Park"]')
+        await expect.soft(ele).toContainText("Gentale Park")
+        await this.page.waitForTimeout(2000)
+    }
+    async StatuswiseFiler_Pending(){
+        await this.page.locator('//select[@class="form-select"]').selectOption({label:"Pending"})
+        await this.page.waitForTimeout(5000)
+    }
+    async StatuswiseFiler_Active(){
+        await this.page.locator('//select[@class="form-select"]').selectOption({value:"2"})
+        await this.page.waitForTimeout(5000)
+    }
+    async StatuswiseFiler_Inactive(){
+        await this.page.locator('//select[@class="form-select"]').selectOption({label:"Inactive"})
+        await this.page.waitForTimeout(5000)
+    }
+    async StatuswiseFiler_Inprogress(){
+        await this.page.locator('//select[@class="form-select"]').selectOption({label:"InProgress"})
+        await this.page.waitForTimeout(5000)
+    }
+    async ColumnWise_Soring_CompanyName(){
+        await this.page.locator(this.CompanyPage_Elements.CompanyName_Sorting).click()
+        await this.page.waitForTimeout(1000)
+        await this.page.locator(this.CompanyPage_Elements.CompanyName_Sorting).click()
+        await this.page.waitForTimeout(1000)
+        await this.page.locator(this.CompanyPage_Elements.CompanyName_Sorting).click()
+        await this.page.waitForTimeout(1000)
+    }
+    async ColumnWise_Soring_CompanyName_Address(){
+        await this.page.locator(this.CompanyPage_Elements.Address_Sorting).click()
+        await this.page.waitForTimeout(1000)
+        await this.page.locator(this.CompanyPage_Elements.Address_Sorting).click()
+        await this.page.waitForTimeout(1000)
+        await this.page.locator(this.CompanyPage_Elements.Address_Sorting).click()
+        await this.page.waitForTimeout(1000)
+    }
+    async ColumnWise_Soring_Company_TotalEmployee(){
+        await this.page.locator(this.CompanyPage_Elements.TotalEmployee_Sorting).click()
+        await this.page.waitForTimeout(1000)
+        await this.page.locator(this.CompanyPage_Elements.TotalEmployee_Sorting).click()
+        await this.page.waitForTimeout(1000)
+        await this.page.locator(this.CompanyPage_Elements.TotalEmployee_Sorting).click()
+        await this.page.waitForTimeout(1000)
+    }
+    async ColumnWise_Soring_Company_Status(){
+        await this.page.locator(this.CompanyPage_Elements.Status_Sorting).click()
+        await this.page.waitForTimeout(1000)
+        await this.page.locator(this.CompanyPage_Elements.Status_Sorting).click()
+        await this.page.waitForTimeout(1000)
+        await this.page.locator(this.CompanyPage_Elements.Status_Sorting).click()
+        await this.page.waitForTimeout(1000)
+    }
+    async clickCompany_NeoGen_ActionThreeDot(){
+        const ele =  await this.page.locator(`(//tr[@class="cursor-pointer"])[15]//div[text()=' In Progress ']`).isVisible()
+        if( ele == true){
+            await this.page.locator(this.CompanyPage_Elements.CompanyName_NeoGen_ActionThreedot).click()
+            await this.page.waitForTimeout(1000)
+            console.log("Hellow")
+        }
+        
+    }
+   async clickResendLink(){
+     await this.page.locator("(//div[@class='dropdown-menu show']//button)[2]").click()
+     await this.page.waitForTimeout(1000)
+     const ele = await this.page.locator("//div[text()=' Do you want to resend link to this company? ']")
+     await expect.soft(ele).toContainText("Do you want to resend link to this company?")
+     await this.page.locator("//button[text()=' Yes ']").click()
+     await this.page.waitForTimeout(1000)
+
+   }
+   async verifyResendLinkSuccessfully(){
+      const ele = await this.page.locator("//h4[text()='Link has been resend successfully']")
+      await expect.soft(ele).toContainText("Link has been resend successfully")
+      await this.page.waitForTimeout(1000)
+   }
 }

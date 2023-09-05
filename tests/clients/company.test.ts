@@ -117,7 +117,7 @@ test("TC - 10 : Validate company name information column wise sorting is working
   await companyPage.ColumnWise_Soring_Company_Status()
   
 })
-test.only("TC - 11 : Validate company user successfully resend deactivated.",async({page,loginPage,companyPage}) =>{
+test("TC - 11 : Validate company user successfully resend deactivated.",async({page,loginPage,companyPage}) =>{
   await page.goto("/login")
   await loginPage.login(data.validstandardusername, data.commonpassword)
   await companyPage.clickClientsPage()

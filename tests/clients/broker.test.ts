@@ -1,6 +1,53 @@
 import test, { expect } from "@fixtures/basepages";
 import * as data from "testData/login.cred.json"
 import { Page } from '@playwright/test';
-test("Validate add new broker",async({page,loginPage,clientsPage})=>{
-
+test("Validate empty broker name alert.",async({page,loginPage,clientsPage,brokerPage})=>{
+    await page.goto("/login")
+    await loginPage.login(data.validstandardusername, data.commonpassword)
+    await brokerPage.clickClientsPage()
+    await brokerPage.clickBrokerPage()
+    await brokerPage.clickAddbrokerBtn()
+    await brokerPage.clickAddnewBrokerBtn()
+    await brokerPage.click_BrokerName_Empty_AlertIcon()
+    await brokerPage.Verify_BrokerName_EmptyAlert_Text()
+})
+test("Validate empty broker address alert.",async({page,loginPage,clientsPage,brokerPage})=>{
+    await page.goto("/login")
+    await loginPage.login(data.validstandardusername, data.commonpassword)
+    await brokerPage.clickClientsPage()
+    await brokerPage.clickBrokerPage()
+    await brokerPage.clickAddbrokerBtn()
+    await brokerPage.clickAddnewBrokerBtn()
+    await brokerPage.clickBroker_Address_AlertIcon()
+    await brokerPage.Verify_BrokerAddress_EmptyAlert_Text()
+})
+test("Validate empty broker contact person First name alert",async({page,loginPage,clientsPage,brokerPage})=>{
+    await page.goto("/login")
+    await loginPage.login(data.validstandardusername, data.commonpassword)
+    await brokerPage.clickClientsPage()
+    await brokerPage.clickBrokerPage()
+    await brokerPage.clickAddbrokerBtn()
+    await brokerPage.clickAddnewBrokerBtn()
+    await brokerPage.clickBroker_ContactPerson_FirstName_AlertIcon()
+    await brokerPage.Verify_BrokerContactPerson_FirstName_EmptyAlert_Text()
+})
+test("Validate empty broker contact person Last name alert",async({page,loginPage,clientsPage,brokerPage})=>{
+    await page.goto("/login")
+    await loginPage.login(data.validstandardusername, data.commonpassword)
+    await brokerPage.clickClientsPage()
+    await brokerPage.clickBrokerPage()
+    await brokerPage.clickAddbrokerBtn()
+    await brokerPage.clickAddnewBrokerBtn()
+    await brokerPage.clickBroker_ContactPerson_LastName_AlertIcon()
+    await brokerPage.Verify_BrokerContactPerson_LastName_EmptyAlert_Text()
+})
+test.only("Validate empty broker contact person Email alert",async({page,loginPage,clientsPage,brokerPage})=>{
+    await page.goto("/login")
+    await loginPage.login(data.validstandardusername, data.commonpassword)
+    await brokerPage.clickClientsPage()
+    await brokerPage.clickBrokerPage()
+    await brokerPage.clickAddbrokerBtn()
+    await brokerPage.clickAddnewBrokerBtn()
+    await brokerPage.clickBroker_ContactPerson_Email_AlertIcon()
+    await brokerPage.Verify_BrokerContactPerson_Email_EmptyAlert_Text()
 })

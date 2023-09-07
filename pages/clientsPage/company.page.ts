@@ -346,6 +346,26 @@ export default class companyPage{
         }
         
     }
+    async clickCompany_PostPay_ActionThreeDot_ForActivated(){
+        const ele =  await this.page.locator(`(//tr[@class="cursor-pointer"])[14]//div[text()=' Inactive ']`).isVisible()
+        if( ele == true){
+            await this.page.locator(`(//tr[@class="cursor-pointer"])[14]/td[7]`).click()
+            await this.page.waitForTimeout(1000)
+            console.log("Hellow")
+            
+        }
+        
+    }
+    async clickCompany_PostPay_ActionThreeDot_ForDeActivated(){
+        const ele =  await this.page.locator(`(//tr[@class="cursor-pointer"])[14]//div[text()=' Active ']`).isVisible()
+        if( ele == true){
+            await this.page.locator(`(//tr[@class="cursor-pointer"])[14]/td[7]`).click()
+            await this.page.waitForTimeout(1000)
+            console.log("Hellow")
+            
+        }
+        
+    }
     async clickCompany_Postepay_ActionThreeDot(){
         const ele =  await this.page.locator('//tr[14]/td[2]/following-sibling:: td[4]/div[text()=" Active "]').isVisible()
            if(ele == true){
@@ -376,5 +396,25 @@ export default class companyPage{
     await this.page.locator("//button[text()=' Yes ']").click()
     await this.page.waitForTimeout(1000)
    }
+   async clickActivatedBtn(){
+    await this.page.locator("//div[@class='dropdown-menu show']//button[1]").click()
+    await this.page.waitForTimeout(1000)
+    const ele = await this.page.locator("//div[text()=' Do you want to activate this company? ']")
+    await this.page.waitForTimeout(1000)
+    await expect.soft(ele).toContainText("Do you want to activate this company?")
+    //click yes
+    await this.page.locator("//button[text()=' Yes ']").click()
+    await this.page.waitForTimeout(1000)
+   }
+   async verifyCompanyActivatedSuccessfully(){
+    const ele = await this.page.locator("//h4[text()='The User has been activated']")
+    await expect.soft(ele).toContainText("The User has been activated")
+    await this.page.waitForTimeout(1000)
+ }
+ async verifyCompanyDeActivatedSuccessfully(){
+    const ele = await this.page.locator("//h4[text()='The User has been deactivated']")
+    await expect.soft(ele).toContainText("The User has been deactivated")
+    await this.page.waitForTimeout(1000)
+ }
    
 }

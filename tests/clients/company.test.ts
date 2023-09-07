@@ -75,14 +75,14 @@ test("TC - 07 : Validate company name successfully added.",async({page,loginPage
   await companyPage.clickCompany()
   await companyPage.clickAddCompany()
   await companyPage.InputCompanyName()
-  // await companyPage.SelectCompanyType_Fintech()
-  // await companyPage.upload_Company_ProfileImages()
-  // await companyPage.upload_Company_BannerImages()
-  // await companyPage.Select_Automation_broker()
-  // await companyPage.InputCompanyContactPerson_FirstName()
-  // await companyPage.InputCompanyContactPerson_LastName()
-  // await companyPage.InputCompanyContactPerson_Email()
-  // await companyPage.InputCompanyContactPerson_PhoneNumber_BD()
+  await companyPage.SelectCompanyType_Fintech()
+  await companyPage.upload_Company_ProfileImages()
+  await companyPage.upload_Company_BannerImages()
+  await companyPage.Select_Automation_broker()
+  await companyPage.InputCompanyContactPerson_FirstName()
+  await companyPage.InputCompanyContactPerson_LastName()
+  await companyPage.InputCompanyContactPerson_Email()
+  await companyPage.InputCompanyContactPerson_PhoneNumber_BD()
   await companyPage.inputCompanyAddress()
   await companyPage.clickAddCompanySubmittBtn()
   
@@ -117,7 +117,7 @@ test("TC - 10 : Validate company name information column wise sorting is working
   await companyPage.ColumnWise_Soring_Company_Status()
   
 })
-test.only("TC - 11 : Validate company activate link successfully resend.",async({page,loginPage,companyPage}) =>{
+test("TC - 11 : Validate company activate link successfully resend.",async({page,loginPage,companyPage}) =>{
   await page.goto("/login")
   await loginPage.login(data.validstandardusername, data.commonpassword)
   await companyPage.clickClientsPage()
@@ -133,9 +133,21 @@ test.only("TC - 12 : Validate company user successfully deactivated.",async({pag
   await loginPage.login(data.validstandardusername, data.commonpassword)
   await companyPage.clickClientsPage()
   await companyPage.clickCompany()
-  await companyPage.clickCompany_NeoGen_ActionThreeDot()
-  await companyPage.clickResendLink()
-  await companyPage.verifyResendLinkSuccessfully()
+  await companyPage.clickCompany_PostPay_ActionThreeDot_ForDeActivated()
+  await companyPage.clickDeactivatedBtn()
+  await companyPage.verifyCompanyDeActivatedSuccessfully()
+
+  
+  
+})
+test.only("TC - 13 : Validate company user successfully activated.",async({page,loginPage,companyPage}) =>{
+  await page.goto("/login")
+  await loginPage.login(data.validstandardusername, data.commonpassword)
+  await companyPage.clickClientsPage()
+  await companyPage.clickCompany()
+  await companyPage.clickCompany_PostPay_ActionThreeDot_ForActivated()
+  await companyPage.clickActivatedBtn()
+  await companyPage.verifyCompanyActivatedSuccessfully()
   
   
 })

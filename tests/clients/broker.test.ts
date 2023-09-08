@@ -1,7 +1,7 @@
 import test, { expect } from "@fixtures/basepages";
 import * as data from "testData/login.cred.json"
 import { Page } from '@playwright/test';
-test("Validate empty broker name alert.",async({page,loginPage,clientsPage,brokerPage})=>{
+test("TC - 01 : Validate empty broker name alert.",async({page,loginPage,clientsPage,brokerPage})=>{
     await page.goto("/login")
     await loginPage.login(data.validstandardusername, data.commonpassword)
     await brokerPage.clickClientsPage()
@@ -11,7 +11,7 @@ test("Validate empty broker name alert.",async({page,loginPage,clientsPage,broke
     await brokerPage.click_BrokerName_Empty_AlertIcon()
     await brokerPage.Verify_BrokerName_EmptyAlert_Text()
 })
-test("Validate empty broker address alert.",async({page,loginPage,clientsPage,brokerPage})=>{
+test("TC - 02 : Validate empty broker address alert.",async({page,loginPage,clientsPage,brokerPage})=>{
     await page.goto("/login")
     await loginPage.login(data.validstandardusername, data.commonpassword)
     await brokerPage.clickClientsPage()
@@ -21,7 +21,7 @@ test("Validate empty broker address alert.",async({page,loginPage,clientsPage,br
     await brokerPage.clickBroker_EmptyAddress_AlertIcon()
     await brokerPage.Verify_BrokerAddress_EmptyAlert_Text()
 })
-test("Validate empty broker contact person First name alert",async({page,loginPage,clientsPage,brokerPage})=>{
+test("TC - 03 : Validate empty broker contact person First name alert",async({page,loginPage,clientsPage,brokerPage})=>{
     await page.goto("/login")
     await loginPage.login(data.validstandardusername, data.commonpassword)
     await brokerPage.clickClientsPage()
@@ -31,7 +31,7 @@ test("Validate empty broker contact person First name alert",async({page,loginPa
     await brokerPage.clickBroker_ContactPerson_FirstName_AlertIcon()
     await brokerPage.Verify_BrokerContactPerson_FirstName_EmptyAlert_Text()
 })
-test("Validate empty broker contact person Last name alert",async({page,loginPage,clientsPage,brokerPage})=>{
+test("TC - 04 : Validate empty broker contact person Last name alert",async({page,loginPage,clientsPage,brokerPage})=>{
     await page.goto("/login")
     await loginPage.login(data.validstandardusername, data.commonpassword)
     await brokerPage.clickClientsPage()
@@ -41,7 +41,7 @@ test("Validate empty broker contact person Last name alert",async({page,loginPag
     await brokerPage.clickBroker_ContactPerson_LastName_AlertIcon()
     await brokerPage.Verify_BrokerContactPerson_LastName_EmptyAlert_Text()
 })
-test("Validate empty broker contact person Email alert",async({page,loginPage,clientsPage,brokerPage})=>{
+test("TC - 05 : Validate empty broker contact person Email alert",async({page,loginPage,clientsPage,brokerPage})=>{
     await page.goto("/login")
     await loginPage.login(data.validstandardusername, data.commonpassword)
     await brokerPage.clickClientsPage()
@@ -51,7 +51,7 @@ test("Validate empty broker contact person Email alert",async({page,loginPage,cl
     await brokerPage.clickBroker_ContactPerson_Email_AlertIcon()
     await brokerPage.Verify_BrokerContactPerson_Email_EmptyAlert_Text()
 })
-test.only("Validate broker added successfully",async({page,loginPage,clientsPage,brokerPage})=>{
+test("TC - 06 : Validate broker added successfully",async({page,loginPage,clientsPage,brokerPage})=>{
     await page.goto("/login")
     await loginPage.login(data.validstandardusername, data.commonpassword)
     await brokerPage.clickClientsPage()
@@ -65,4 +65,43 @@ test.only("Validate broker added successfully",async({page,loginPage,clientsPage
     await brokerPage.InputBrokerContactPersonFirstName()
     await brokerPage.InputBrokerContactPersonLastName()
     await brokerPage.InputBrokerContactPersonEmail()
+    await brokerPage.InputBrokerContactPerson_PhoneNumber_BD()
+    await brokerPage.clickAddNewBroker()
+})
+test("TC - 07 : Validate broker search field is working.",async({page,loginPage,clientsPage,brokerPage})=>{
+    await page.goto("/login")
+    await loginPage.login(data.validstandardusername, data.commonpassword)
+    await brokerPage.clickClientsPage()
+    await brokerPage.clickBrokerPage()
+    await brokerPage.SearchBroker()
+    await brokerPage.verifySearchBroker()
+})
+test("TC - 08 : Validate broker category wise filter is working.",async({page,loginPage,clientsPage,brokerPage})=>{
+    await page.goto("/login")
+    await loginPage.login(data.validstandardusername, data.commonpassword)
+    await brokerPage.clickClientsPage()
+    await brokerPage.clickBrokerPage()
+    await brokerPage.BrokerCategory_FilterBy_Medical_InformationTechnology_EfficientBroker()
+})
+test("TC - 09 : Validate broker name date range wise filter is working.",async({page,loginPage,clientsPage,brokerPage})=>{
+    await page.goto("/login")
+    await loginPage.login(data.validstandardusername, data.commonpassword)
+    await brokerPage.clickClientsPage()
+    await brokerPage.clickBrokerPage()
+    await brokerPage.clickCalenderBtn()
+    await brokerPage.selectMonth()
+    await brokerPage.selectYear()
+    await brokerPage.selectDate_LowRange()
+    await brokerPage.selectDate_HighRange()
+    await brokerPage.verifySelectedBroker_DateRang()
+})
+test("TC - 10 : Validate broker name status wise filtering.",async({page,loginPage,clientsPage,brokerPage})=>{
+    await page.goto("/login")
+    await loginPage.login(data.validstandardusername, data.commonpassword)
+    await brokerPage.clickClientsPage()
+    await brokerPage.clickBrokerPage()
+    await brokerPage.selectStatus_Pending()
+    await brokerPage.selectStatus_Active()
+    await brokerPage.selectStatus_Inactive()
+    await brokerPage.selectStatus_InProgress()
 })

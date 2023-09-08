@@ -32,6 +32,8 @@ export default class brokerPage {
         BrokerContactPersonEmptyLastNameAlertText:"//div[text()=' Last Name cannot be empty. ']",
         BrokerContactPersonEmptyEmailAlertText:"//div[text()=' Email cannot be empty. ']",
         BrokerAddress:"#address",
+        brokerSearch:"//input[@placeholder='Search ...']",
+        RangeCalender:"//span[@type='button']",
 
 
 
@@ -200,6 +202,96 @@ export default class brokerPage {
         }
 
      }
-    
-    
+     async InputBrokerContactPerson_PhoneNumber_BD(){
+       
+        await this.page.locator('//span[@class="select2-selection__arrow"]').click()
+        await this.page.waitForTimeout(1000)
+        await this.page.locator("//input[@type='search']").fill("BD")
+        await this.page.keyboard.press("Enter")
+        await this.page.waitForTimeout(2000)
+        await this.page.locator("input[name='InputPhone']").fill("01568703919")
+     
+ 
+     }
+     async clickAddNewBroker(){
+        const ele = await this.page.locator(this.brokerPage_Elements.AddNewBrokerBtn)
+        try {
+             await ele.click()
+             await this.page.waitForTimeout(7000)
+        } catch (error) {
+            throw new Error(`Clients | Broker | Add Broker | input Broker all information  | Add new broker button element is not visible, could not found locotor : ${error}`)
+        }
+     }
+     async SearchBroker(){
+        const ele = this.page.locator(this.brokerPage_Elements.brokerSearch)
+        try {
+            await ele.fill("Automation_Broker")
+            await this.page.waitForTimeout(6000)
+        } catch (error)
+         {
+            throw new Error(`Clients | Broker |broker Search field element is not visible, could not found locotor : ${error}`)
+        }
+     }
+     async verifySearchBroker(){
+        const ele = this.page.locator("//p[@class='user-name'])[1]")
+        try {
+            await expect(this.page.locator("(//div[@class='user-info']//p)[1]")).toBeTruthy()
+        } catch (error) {
+            throw new Error(`Clients | Broker | Search broker element is not visible, could not found locotor : ${error}`)
+        }
+        
+     }
+     async BrokerCategory_FilterBy_Medical_InformationTechnology_EfficientBroker(){
+        await this.page.locator("(//select[@class='form-select'])[1]").selectOption({label:"Medical"})
+        await this.page.waitForTimeout(4000)
+        await this.page.locator("(//select[@class='form-select'])[1]").selectOption({label:"Information Technology"})
+        await this.page.waitForTimeout(4000)
+        await this.page.locator("(//select[@class='form-select'])[1]").selectOption({label:"Efficient Broker"})
+        await this.page.waitForTimeout(4000)
+     }
+     async clickCalenderBtn(){
+        const ele = await this.page.locator(this.brokerPage_Elements.RangeCalender)
+        try {
+            await ele.click()
+            await this.page.waitForTimeout(1000)
+        } catch (error) {
+            throw new Error(`Clients | Broker | DateRangeButton | Date range button elements is visible, Could not found locotor : ${error}`)
+        }
+
+     }
+     async selectMonth(){
+        await this.page.locator('(//select[@class="form-select"])[2]').selectOption({label :"Aug"})
+        await this.page.waitForTimeout(2000)
+     }
+     async selectYear(){
+        await this.page.locator('(//select[@class="form-select"])[3]').selectOption({value:"2023"})
+        await this.page.waitForTimeout(2000)
+     }
+     async selectDate_LowRange(){
+        await this.page.locator("//div[@aria-label='Tuesday, August 1, 2023']").click()
+        await this.page.waitForTimeout(1000)
+     }
+    async selectDate_HighRange(){
+        await this.page.locator("(//div[@aria-label='Thursday, August 31, 2023'])[1]").click()
+        await this.page.waitForTimeout(4000)
+    }
+    async verifySelectedBroker_DateRang(){
+        await expect( this.page.locator('//div[@class="user-info"]/p[1]')).toBeTruthy()
+    }
+    async selectStatus_Pending(){
+        await this.page.locator('(//select[@class="form-select"])[2]').selectOption({label : "Pending"})
+        await this.page.waitForTimeout(3000)
+    }
+    async selectStatus_Active(){
+        await this.page.locator('(//select[@class="form-select"])[2]').selectOption({label : "Active"})
+        await this.page.waitForTimeout(3000)
+    }
+    async selectStatus_Inactive(){
+        await this.page.locator('(//select[@class="form-select"])[2]').selectOption({label : "Inactive"})
+        await this.page.waitForTimeout(3000)
+    }
+    async selectStatus_InProgress(){
+        await this.page.locator('(//select[@class="form-select"])[2]').selectOption({label : "InProgress"})
+        await this.page.waitForTimeout(3000)
+    }
 }

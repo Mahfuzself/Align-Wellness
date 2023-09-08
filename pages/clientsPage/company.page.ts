@@ -182,7 +182,7 @@ export default class companyPage{
         }
     }
     async InputCompanyName(){
-        const rendomComapnyName = "company"+new Date().getSeconds()
+        const rendomComapnyName =("TestAutomation").concat((new Date().getTime()).toString());
         const ele = await this.page.locator(this.CompanyPage_Elements.inputCompanyName)
         try {
              await ele.fill(rendomComapnyName)
@@ -218,8 +218,8 @@ export default class companyPage{
         const fileChooser = await fileChooserPromise;
         await fileChooser.setFiles('./testData/Images/banner.jpg');
          await this.page.waitForTimeout(15000)
+         await this.page.keyboard.press('ArrowDown')
          await this.page.waitForLoadState()
-        
     }
     async Select_Automation_broker(){
         await this.page.locator("#broker").selectOption({label:"Automation_Broker"})
@@ -274,7 +274,9 @@ export default class companyPage{
        const ele =  await this.page.locator(this.CompanyPage_Elements.CompanyAddress)
        try {
           await ele.fill("Mirpur-1")
-          await this.page.waitForTimeout(3000)
+          await this.page.waitForTimeout(1000)
+          await this.page.keyboard.press("ArrowDown")
+          await this.page.waitForTimeout(1000)
           await this.page.keyboard.press("Enter")
           await this.page.waitForTimeout(1000)
        } catch (error) {

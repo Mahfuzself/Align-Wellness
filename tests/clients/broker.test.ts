@@ -18,7 +18,7 @@ test("Validate empty broker address alert.",async({page,loginPage,clientsPage,br
     await brokerPage.clickBrokerPage()
     await brokerPage.clickAddbrokerBtn()
     await brokerPage.clickAddnewBrokerBtn()
-    await brokerPage.clickBroker_Address_AlertIcon()
+    await brokerPage.clickBroker_EmptyAddress_AlertIcon()
     await brokerPage.Verify_BrokerAddress_EmptyAlert_Text()
 })
 test("Validate empty broker contact person First name alert",async({page,loginPage,clientsPage,brokerPage})=>{
@@ -41,7 +41,7 @@ test("Validate empty broker contact person Last name alert",async({page,loginPag
     await brokerPage.clickBroker_ContactPerson_LastName_AlertIcon()
     await brokerPage.Verify_BrokerContactPerson_LastName_EmptyAlert_Text()
 })
-test.only("Validate empty broker contact person Email alert",async({page,loginPage,clientsPage,brokerPage})=>{
+test("Validate empty broker contact person Email alert",async({page,loginPage,clientsPage,brokerPage})=>{
     await page.goto("/login")
     await loginPage.login(data.validstandardusername, data.commonpassword)
     await brokerPage.clickClientsPage()
@@ -50,4 +50,19 @@ test.only("Validate empty broker contact person Email alert",async({page,loginPa
     await brokerPage.clickAddnewBrokerBtn()
     await brokerPage.clickBroker_ContactPerson_Email_AlertIcon()
     await brokerPage.Verify_BrokerContactPerson_Email_EmptyAlert_Text()
+})
+test.only("Validate broker added successfully",async({page,loginPage,clientsPage,brokerPage})=>{
+    await page.goto("/login")
+    await loginPage.login(data.validstandardusername, data.commonpassword)
+    await brokerPage.clickClientsPage()
+    await brokerPage.clickBrokerPage()
+    await brokerPage.clickAddbrokerBtn()
+    await brokerPage.inputBroker_Name()
+    await brokerPage.selectBrokerType_Medical()
+    await brokerPage.inputBrokerAddress()
+    await brokerPage.InputBrokerContactPersonFirstName()
+    await brokerPage.InputBrokerContactPersonLastName()
+    await brokerPage.InputBrokerContactPersonFirstName()
+    await brokerPage.InputBrokerContactPersonLastName()
+    await brokerPage.InputBrokerContactPersonEmail()
 })

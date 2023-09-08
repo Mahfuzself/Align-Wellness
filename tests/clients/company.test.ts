@@ -128,7 +128,7 @@ test("TC - 11 : Validate company activate link successfully resend.",async({page
   
   
 })
-test.only("TC - 12 : Validate company user successfully deactivated.",async({page,loginPage,companyPage}) =>{
+test("TC - 12 : Validate company user successfully deactivated.",async({page,loginPage,companyPage}) =>{
   await page.goto("/login")
   await loginPage.login(data.validstandardusername, data.commonpassword)
   await companyPage.clickClientsPage()
@@ -140,7 +140,7 @@ test.only("TC - 12 : Validate company user successfully deactivated.",async({pag
   
   
 })
-test.only("TC - 13 : Validate company user successfully activated.",async({page,loginPage,companyPage}) =>{
+test("TC - 13 : Validate company user successfully activated.",async({page,loginPage,companyPage}) =>{
   await page.goto("/login")
   await loginPage.login(data.validstandardusername, data.commonpassword)
   await companyPage.clickClientsPage()

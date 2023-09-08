@@ -8,11 +8,11 @@ export default class brokerPage {
     private brokerPage_Elements = {
         brokerPage : "//a[contains(text(),'Broker')]",
         addbroker : "//button[text()=' Add Broker ']",
-        inputbrokerName : "BrokerName",
-        input_BrokerContactpersonFirstname: "FirstName",
-        input_BrokerContactpersonLastname:"LastName",
-        input_BrokerContactpersonEmail:"Email",
-        input_Broker_Suite:"SuiteAptLocation",
+        inputbrokerName : "#BrokerName",
+        input_BrokerContactpersonFirstname: "#FirstName",
+        input_BrokerContactpersonLastname:"#LastName",
+        input_BrokerContactpersonEmail:"#Email",
+        input_Broker_Suite:"#SuiteAptLocation",
         AddBrokerText:"//h4[text()='Add broker']",
         BrokerInformation: "//h5[text()='Broker Information']",
         AddNewBrokerBtn:"//button[text()=' Add New Broker ']",
@@ -31,6 +31,7 @@ export default class brokerPage {
         BrokerContactPersonEmptyFirstNameAlertText:"//div[text()=' First Name cannot be empty. ']",
         BrokerContactPersonEmptyLastNameAlertText:"//div[text()=' Last Name cannot be empty. ']",
         BrokerContactPersonEmptyEmailAlertText:"//div[text()=' Email cannot be empty. ']",
+        BrokerAddress:"#address",
 
 
 
@@ -57,7 +58,7 @@ export default class brokerPage {
         }
     }
     async clickBroker_EmptyAddress_AlertIcon(){
-        const ele = this.page.locator(this.brokerPage_Elements.BrokerName_EmptyAlert_Icon)
+        const ele = this.page.locator(this.brokerPage_Elements.BrokerAddress_EmptyAlert_Icon)
         try {
             await ele.click()
         } catch (error) {
@@ -140,10 +141,65 @@ export default class brokerPage {
         const ele = this.page.locator(this.brokerPage_Elements.brokerPage)
         try {
             await ele.click()
+            await this.page.waitForTimeout(7000)
         } catch (error) {
             throw new Error(`Clients | Broker page element is not visible , Could not found locotor : ${Error}`)
         }
     }
+    async inputBroker_Name(){
+        const ele = await this.page.locator(this.brokerPage_Elements.inputbrokerName)
+        try {
+            await ele.fill("Automation_Broker")
+            await this.page.waitForTimeout(1000)
+        } catch (error) {
+            throw new Error(`Clients | Broker | Add broker | Broker page input element is not visible , Could not found locotor : ${Error}`)
+        }
+    }
+    async selectBrokerType_Medical(){
+        await this.page.locator("#brokerType").selectOption({label:"Medical"})
+        await this.page.waitForTimeout(3000)
+    }
+    async inputBrokerAddress(){
+        const ele =  await this.page.locator(this.brokerPage_Elements.BrokerAddress)
+        try {
+           await ele.fill("Mirpur-1")
+           await this.page.waitForTimeout(1000)
+           await this.page.keyboard.press("ArrowDown")
+           await this.page.waitForTimeout(1000)
+           await this.page.keyboard.press("Enter")
+           await this.page.waitForTimeout(1000)
+        } catch (error) {
+         throw new Error(`Clients | Broker | Add Broker | input Broker address  | input Broker address input field element is not visible, could not found locotor : ${error}`)
+        }
+     }
+     async InputBrokerContactPersonFirstName(){
+        const ele = await this.page.locator(this.brokerPage_Elements.input_BrokerContactpersonFirstname)
+        try {
+            await ele.fill("Test")
+        } catch (error) {
+            throw new Error(`Clients | Broker | Add Broker | input Broker First Name  | Broker First Name input field element is not visible, could not found locotor : ${error}`)
+        }
+
+     }
+     async InputBrokerContactPersonLastName(){
+        const ele = await this.page.locator(this.brokerPage_Elements.input_BrokerContactpersonLastname)
+        try {
+            await ele.fill("Automation")
+        } catch (error) {
+            throw new Error(`Clients | Broker | Add Broker | input Broker Last Name  | Broker Last Name input field element is not visible, could not found locotor : ${error}`)
+        }
+
+     }
+     async InputBrokerContactPersonEmail(){
+        const ele = await this.page.locator(this.brokerPage_Elements.input_BrokerContactpersonEmail)
+        let email = "testautomation"+ new Date().getSeconds()
+        try {
+            await ele.fill(email)
+        } catch (error) {
+            throw new Error(`Clients | Broker | Add Broker | input Broker email  | Broker email input field element is not visible, could not found locotor : ${error}`)
+        }
+
+     }
     
     
 }

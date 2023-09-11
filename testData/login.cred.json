@@ -12,5 +12,7 @@
     "validstandardusername":"jamessmith@yopmail.com",
     "doesnotexistmail": "hello@yopmail.com",
     "wrongpassword": "hello@1234",
-    "inputblockedemail" : "johnosborne@yopmail.com"
+    "inputblockedemail" : "johnosborne@yopmail.com",
+    "ValidVendor" : "donstrickland@yopmail.com"
+
 } 

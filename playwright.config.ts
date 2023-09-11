@@ -24,7 +24,10 @@ const config: PlaywrightTestConfig = {
    // "usermanagement/alignwelluser.test.ts",
    //"usermanagement/Contractor.test.ts",
   //"usermanagement/healthcareprovider.test.ts",
-  "broker.test.ts"
+  // "broker.test.ts",
+   "usermanagement/alignuser/masteradmin.test.ts",
+  // "usermanagement/alignuser/standard.test.ts",
+
 
   ],
   

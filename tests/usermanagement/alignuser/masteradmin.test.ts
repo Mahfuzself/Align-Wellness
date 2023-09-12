@@ -45,3 +45,17 @@ test("TC - 01 : Validate modules and sub modules for master admin. ",async({page
    })
   
 })
+test("TC - 01 : Validate master admin align user succefully login.",async({page,loginPage,masteradminPage})=>{
+   await page.goto("/login")
+   await loginPage.login(data.validmasteradminusername,data.commonpassword)
+   await masteradminPage.verifyMasterAdminUserName_AndrewMiller()
+})
+test.only("TC - 02 : Validate master admin event management module is visible.",async({page,loginPage,masteradminPage})=>{
+   await page.goto("/login")
+   await loginPage.login(data.validmasteradminusername,data.commonpassword)
+   await masteradminPage.verifyMasterAdminUserName_AndrewMiller()
+   await test.step("Now validate event management module is visible.",async()=>{
+      await masteradminPage.verifyEventManagementModule()
+      await masteradminPage.clickEventManagement()
+ })
+})

@@ -25,6 +25,7 @@ export default class masteradminPage {
       ContractorListText:"//h1[text()='Contractor List']",
       healthCareProvider:"//a[contains(.,'Healthcare Providers')]",
       ProvidersText:"//h1[text()='Providers']",
+      MasterAdminUserName:"//h5[text()='Andrew Miller']"
       
     }
     async verifyEventManagementModule(){
@@ -57,6 +58,14 @@ export default class masteradminPage {
             await expect.soft(ele).toContainText("User Management")
         } catch (error) {
             throw new Error(`Master Admin User | Login | User Management module element is not visible,could not found locotor : ${error}`)
+        }
+    }
+    async verifyMasterAdminUserName_AndrewMiller(){
+        const ele = await this.page.locator(this.masteradminPage_Elements.MasterAdminUserName)
+        try {
+            await expect.soft(ele).toContainText("Andrew Miller")
+        } catch (error) {
+            throw new Error(`Master Admin User | Login | Andrew Miller name align user element is not visible,could not found locotor : ${error}`)
         }
     }
     async verifyEventsSubModule(){

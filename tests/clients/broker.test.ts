@@ -51,7 +51,7 @@ test("TC - 05 : Validate empty broker contact person Email alert",async({page,lo
     await brokerPage.clickBroker_ContactPerson_Email_AlertIcon()
     await brokerPage.Verify_BrokerContactPerson_Email_EmptyAlert_Text()
 })
-test("TC - 06 : Validate broker added successfully",async({page,loginPage,clientsPage,brokerPage})=>{
+test.only("TC - 06 : Validate broker added successfully",async({page,loginPage,clientsPage,brokerPage})=>{
     await page.goto("/login")
     await loginPage.login(data.validstandardusername, data.commonpassword)
     await brokerPage.clickClientsPage()
